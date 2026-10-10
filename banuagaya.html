@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTN Banua Nagaya - Perumahan & KPR BTN Palu Utara</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        btn: {
+                            blue: '#00468B',
+                            darkblue: '#003163',
+                            navy: '#0A192F',
+                            yellow: '#FFC107',
+                            gold: '#F59E0B',
+                            light: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 70, 139, 0.15), 0 10px 10px -5px rgba(0, 70, 139, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Top Bar Contact -->
+    <div class="bg-btn-navy text-white text-xs py-2 px-4 border-b border-blue-900/50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-2">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center"><i class="fas me-1 text-btn-yellow fa-map-marker-alt"></i> Panau, Palu Utara, Sulawesi Tengah</span>
+                <span class="hidden md:flex items-center"><i class="fas me-1 text-btn-yellow fa-phone"></i> (0451) 829-1234 / +62 821-9876-5432</span>
+            </div>
+            <div class="flex items-center space-x-3 text-xs">
+                <span class="bg-btn-yellow/20 text-btn-yellow px-2 py-0.5 rounded font-semibold border border-btn-yellow/30"><i class="fas fa-check-circle me-1"></i>KPR BTN Resmi</span>
+                <a href="#kpr-simulasi" class="hover:text-btn-yellow transition"><i class="fas fa-calculator me-1"></i>Simulasi KPR</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navbar -->
+    <nav class="bg-btn-blue text-white sticky top-0 z-40 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="bg-white p-2 rounded-lg shadow-inner flex items-center justify-center">
+                        <span class="text-btn-blue font-extrabold text-2xl tracking-tighter">BTN</span>
+                    </div>
+                    <div>
+                        <div class="font-bold text-lg leading-tight tracking-wide text-white">BANUA NAGAYA</div>
+                        <div class="text-xs text-btn-yellow font-medium tracking-wider">RESIDENCE PALU UTARA</div>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Menu -->
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <a href="#beranda" class="hover:text-btn-yellow transition py-1 border-b-2 border-transparent hover:border-btn-yellow">Beranda</a>
+                    <a href="#panduan-grid" class="hover:text-btn-yellow transition py-1 border-b-2 border-transparent hover:border-btn-yellow">Tipe & Panduan</a>
+                    <a href="#fasilitas" class="hover:text-btn-yellow transition py-1 border-b-2 border-transparent hover:border-btn-yellow">Fasilitas</a>
+                    <a href="#kpr-simulasi" class="hover:text-btn-yellow transition py-1 border-b-2 border-transparent hover:border-btn-yellow">Simulasi KPR</a>
+                    <a href="#kontak" class="hover:text-btn-yellow transition py-1 border-b-2 border-transparent hover:border-btn-yellow">Kontak</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="https://wa.me/6282198765432?text=Halo%20Marketing%20BTN%20Banua%20Nagaya,%20saya%20ingin%20tanya%20informasi%20rumah" target="_blank" class="bg-btn-yellow hover:bg-yellow-500 text-btn-navy font-bold px-4 py-2.5 rounded-lg shadow transition duration-200 flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-lg"></i> Hubungi Marketing
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-btn-yellow focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-btn-darkblue border-t border-blue-800">
+            <div class="px-4 pt-3 pb-5 space-y-2 text-sm font-medium">
+                <a href="#beranda" class="block px-3 py-2 rounded-md hover:bg-btn-blue hover:text-btn-yellow">Beranda</a>
+                <a href="#panduan-grid" class="block px-3 py-2 rounded-md hover:bg-btn-blue hover:text-btn-yellow">Tipe & Panduan</a>
+                <a href="#fasilitas" class="block px-3 py-2 rounded-md hover:bg-btn-blue hover:text-btn-yellow">Fasilitas</a>
+                <a href="#kpr-simulasi" class="block px-3 py-2 rounded-md hover:bg-btn-blue hover:text-btn-yellow">Simulasi KPR</a>
+                <a href="#kontak" class="block px-3 py-2 rounded-md hover:bg-btn-blue hover:text-btn-yellow">Kontak</a>
+                <a href="https://wa.me/6282198765432" target="_blank" class="block w-full text-center bg-btn-yellow text-btn-navy font-bold px-4 py-2.5 rounded-lg shadow mt-2">
+                    <i class="fab fa-whatsapp me-2"></i> Hubungi Marketing
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section id="beranda" class="relative bg-gradient-to-r from-btn-darkblue via-btn-blue to-blue-900 text-white py-16 lg:py-24 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-full text-btn-yellow text-xs sm:text-sm font-semibold border border-white/20">
+                        <i class="fas fa-home"></i> Perumahan Subsidi & Komersil Terfavorit di Palu
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+                        Banua Nagaya Residence <br><span class="text-btn-yellow">Hunian Asri & Modern Palu Utara</span>
+                    </h1>
+                    <p class="text-gray-200 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light">
+                        Nikmati kemudahan memiliki rumah impian dengan program **KPR Bank BTN** (Subsidi & Komersil). Suku bunga ringan mulai 5%, angsuran terjangkau, lokasi bebas banjir dan strategis.
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+                        <a href="#panduan-grid" class="bg-btn-yellow hover:bg-yellow-500 text-btn-navy font-bold px-6 py-3.5 rounded-xl shadow-lg transition duration-200 flex items-center gap-2">
+                            <i class="fas fa-th-large"></i> Lihat Katalog & Panduan
+                        </a>
+                        <a href="#kpr-simulasi" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-xl border border-white/30 backdrop-blur-md transition duration-200 flex items-center gap-2">
+                            <i class="fas fa-calculator text-btn-yellow"></i> Hitung KPR BTN
+                        </a>
+                    </div>
+                    <div class="pt-4 flex items-center justify-center lg:justify-start gap-6 text-xs sm:text-sm text-gray-300">
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-btn-yellow"></i> Bunga 5% Fixed</div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-btn-yellow"></i> DP Ringan</div>
+                        <div class="flex items-center gap-2"><i class="fas fa-check-circle text-btn-yellow"></i> Tenor s/d 20 Thn</div>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md bg-white p-3 rounded-2xl shadow-2xl rotate-1 hover:rotate-0 transition duration-300">
+                        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80" alt="Rumah Banua Nagaya" class="w-full h-72 object-cover rounded-xl">
+                        <div class="p-4 text-gray-800">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="bg-green-100 text-green-800 text-xs font-bold px-2.5 py-0.5 rounded">Ready Stock / Siap Huni</span>
+                                    <h3 class="font-bold text-lg mt-1">Tipe 36/104 - Banua Nagaya</h3>
+                                    <p class="text-xs text-gray-500"><i class="fas fa-map-marker-alt text-red-500 me-1"></i>Panau, Palu Utara</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-gray-500 block">Angsuran Mulai</span>
+                                    <span class="text-btn-blue font-extrabold text-lg">Rp 900-ribuan<span class="text-xs font-normal">/bln</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Card Grid Section (Styled after user reference screenshot) -->
+    <main id="panduan-grid" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-btn-blue font-bold text-sm tracking-wider uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Layanan & Informasi Terpadu</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2">Pusat Panduan & Layanan BTN Banua Nagaya</h2>
+            <p class="text-gray-600 mt-2 text-sm sm:text-base">Temukan informasi lengkap mengenai tipe rumah, berkas KPR BTN, lokasi strategis, promo, serta simulasi angsuran dalam satu tempat.</p>
+        </div>
+
+        <!-- 8 Card Grid matching reference layout structure -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Card 1 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden card-hover flex flex-col justify-between">
+                <div>
+                    <div class="relative h-48 overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80" alt="Tipe 36/104 Subsidi" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 left-3 bg-btn-blue text-white text-xs font-bold px-2.5 py-1 rounded shadow">Tipe 36/104</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-1">1. Tipe 36/104 (Subsidi)</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Rumah idaman subsidi dengan tanah luas 104m², 2 kamar tidur, carport luas, dan angsuran ringan mulai 900 ribuan/bulan.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="openModal('modal-1')" class="w-full bg-btn-blue hover:bg-btn-darkblue text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition duration-200 shadow-sm flex items-center justify-center gap-2">
+                        <span>Lihat Panduan</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden card-hover flex flex-col justify-between">
+                <div>
+                    <div class="relative h-48 overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Tipe Komersil Modern" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 left-3 bg-btn-gold text-white text-xs font-bold px-2.5 py-1 rounded shadow">Komersil</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-1">2. Tipe Komersil Modern</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Desain arsitektur modern minimalis dengan tata ruang luas & pencahayaan optimal untuk kenyamanan keluarga berkembang.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="openModal('modal-2')" class="w-full bg-btn-blue hover:bg-btn-darkblue text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition duration-200 shadow-sm flex items-center justify-center gap-2">
+                        <span>Lihat Panduan</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden card-hover flex flex-col justify-between">
+                <div>
+                    <div class="relative h-48 overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Simulasi & Pengajuan KPR" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 left-3 bg-green-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow">KPR BTN</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-1">3. Pengajuan KPR BTN</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Proses pengajuan cepat, suku bunga ringan 5%, serta pendampingan pemberkasan KPR hingga akad kredit selesai.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="scrollToCalc()" class="w-full bg-btn-blue hover:bg-btn-darkblue text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition duration-200 shadow-sm flex items-center justify-center gap-2">
+                        <span>Hitung KPR</span>
+                        <i class="fas fa-calculator text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden card-hover flex flex-col justify-between">
+                <div>
+                    <div class="relative h-48 overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1524813686514-a57563d77965?auto=format&fit=crop&w=600&q=80" alt="Lokasi Strategis Panau" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 left-3 bg-purple-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow">Palu Utara</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-1">4. Lokasi Strategis Panau</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Akses sangat mudah, dekat fasilitas umum, sekolah, puskesmas, pasar, dan jalan utama Palu-Kawasan Industri.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="openModal('modal-4')" class="w-full bg-btn-blue hover:bg-btn-darkblue text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition duration-200 shadow-sm flex items-center justify-center gap-2">
+                        <span>Lihat Lokasi</span>
+                        <i class="fas fa-map-marked-alt text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden card-hover flex flex-col justify-between">
+                <div>
+                    <div class="relative h-48 overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Fasilitas Kompleks" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 left-3 bg-teal-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow">Fasilitas</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-1">5. Fasilitas Kompleks</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Fasilitas air bersih, PLN 900W, jalan kompleks paving blok selebar 6m, drainase rapi, dan ruang terbuka hijau.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="openModal('modal-5')" class="w-full bg-btn-blue hover:bg-btn-darkblue text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition duration-200 shadow-sm flex items-center justify-center gap-2">
+                        <span>Lihat Panduan</span>
+                        <i class="fas fa-arrow-right text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden card-hover flex flex-col justify-between">
+                <div>
+                    <div class="relative h-48 overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=80" alt="Promo & Brosur Terbaru" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 left-3 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow">Promo Special</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-1">6. Promo & Brosur Terbaru</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Diskon DP, bebas biaya BPHTB & Notaris, serta bonus kanopi atau pompa air khusus booking bulan ini.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="openModal('modal-6')" class="w-full bg-btn-blue hover:bg-btn-darkblue text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition duration-200 shadow-sm flex items-center justify-center gap-2">
+                        <span>Cek Promo</span>
+                        <i class="fas fa-tags text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden card-hover flex flex-col justify-between">
+                <div>
+                    <div class="relative h-48 overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=600&q=80" alt="Panduan Alur Pembelian" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 left-3 bg-indigo-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow">Alur KPR</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-1">7. Alur Pembelian KPR</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Langkah mudah dari booking unit, kelengkapan berkas, wawancara Bank BTN, hingga akad & serah terima kunci.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <button onclick="openModal('modal-7')" class="w-full bg-btn-blue hover:bg-btn-darkblue text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition duration-200 shadow-sm flex items-center justify-center gap-2">
+                        <span>Lihat Panduan</span>
+                        <i class="fas fa-list-ol text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden card-hover flex flex-col justify-between">
+                <div>
+                    <div class="relative h-48 overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Layanan Customer Care" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                        <span class="absolute top-3 left-3 bg-amber-600 text-white text-xs font-bold px-2.5 py-1 rounded shadow">Layanan</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-gray-900 text-lg mb-2 line-clamp-1">8. Customer Care & Kontak</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                            Hubungi tim marketing resmi, konsultasikan kelayakan KPR Anda, dan jadwalkan survey lokasi proyek secara langsung.
+                        </p>
+                    </div>
+                </div>
+                <div class="p-5 pt-0">
+                    <a href="https://wa.me/6282198765432" target="_blank" class="w-full bg-btn-blue hover:bg-btn-darkblue text-white font-semibold py-2.5 px-4 rounded-lg text-sm transition duration-200 shadow-sm flex items-center justify-center gap-2">
+                        <span>Hubungi CS</span>
+                        <i class="fab fa-whatsapp text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Interactive KPR Calculator Section -->
+    <section id="kpr-simulasi" class="bg-gray-200 py-16 border-t border-b border-gray-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="bg-btn-blue p-6 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="bg-btn-yellow text-btn-navy text-xs font-bold px-2.5 py-1 rounded">Fitur Unggulan</span>
+                        <h2 class="text-2xl font-bold mt-1">Kalkulator Simulasi KPR BTN</h2>
+                        <p class="text-blue-100 text-sm">Hitung estimasi angsuran bulanan rumah impian Anda secara akurat.</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-blue-200">Suku Bunga Subsidi BTN</span>
+                        <div class="text-2xl font-extrabold text-btn-yellow">5.0% Fixed</div>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Inputs -->
+                    <div class="lg:col-span-7 space-y-5">
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Tipe Skema KPR</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button type="button" id="btn-subsidi" onclick="setKprType('subsidi')" class="py-2 px-4 rounded-lg border-2 border-btn-blue bg-blue-50 text-btn-blue font-bold text-sm text-center">
+                                    Subsidi (FLPP 5%)
+                                </button>
+                                <button type="button" id="btn-komersil" onclick="setKprType('komersil')" class="py-2 px-4 rounded-lg border-2 border-gray-200 text-gray-600 font-bold text-sm text-center hover:border-btn-blue">
+                                    Komersil (Bunga 8.5%)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="text-sm font-semibold text-gray-700">Harga Rumah (Rp)</label>
+                                <span id="harga-val" class="text-sm font-bold text-btn-blue">168.000.000</span>
+                            </div>
+                            <input type="range" id="harga" min="150000000" max="400000000" step="5000000" value="168000000" class="w-full accent-btn-blue cursor-pointer" oninput="calculateKPR()">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="text-sm font-semibold text-gray-700">Uang Muka / DP (%)</label>
+                                <span id="dp-val" class="text-sm font-bold text-btn-blue">5% (Rp 8.400.000)</span>
+                            </div>
+                            <input type="range" id="dp" min="1" max="30" step="1" value="5" class="w-full accent-btn-blue cursor-pointer" oninput="calculateKPR()">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">Jangka Waktu (Tenor)</label>
+                            <select id="tenor" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-btn-blue focus:outline-none text-sm font-medium" onchange="calculateKPR()">
+                                <option value="10">10 Tahun (120 Bulan)</option>
+                                <option value="15">15 Tahun (180 Bulan)</option>
+                                <option value="20" selected>20 Tahun (240 Bulan)</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <!-- Output Box -->
+                    <div class="lg:col-span-5 bg-blue-50 p-6 rounded-xl border border-blue-100 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base font-bold text-gray-800 border-b border-blue-200 pb-3 mb-4">Ringkasan Estimasi Angsuran</h3>
+                            
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Plafon Pinjaman KPR:</span>
+                                    <span id="plafon-txt" class="font-semibold text-gray-900">Rp 159.600.000</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Suku Bunga:</span>
+                                    <span id="bunga-txt" class="font-semibold text-gray-900">5.0% Fixed</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Estimasi Uang Muka:</span>
+                                    <span id="dp-txt" class="font-semibold text-gray-900">Rp 8.400.000</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 p-4 bg-white rounded-lg border border-blue-200 text-center shadow-sm">
+                                <span class="text-xs text-gray-500 uppercase font-bold tracking-wider block">Angsuran Bulanan</span>
+                                <span id="angsuran-val" class="text-3xl font-extrabold text-btn-blue my-1 block">Rp 1.053.000</span>
+                                <span class="text-xs text-green-600 font-medium"><i class="fas fa-shield-alt me-1"></i>Estimasi Tetap Sampai Lunas</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <a id="wa-kpr-btn" href="#" target="_blank" class="w-full bg-btn-yellow hover:bg-yellow-500 text-btn-navy font-bold py-3 px-4 rounded-lg text-sm transition duration-200 shadow text-center block">
+                                <i class="fab fa-whatsapp me-2"></i> Ajukan KPR Ini Sekarang
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="fasilitas" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900">Fasilitas Lengkap Banua Nagaya</h2>
+                <p class="text-gray-600 mt-2">Kenyamanan lingkungan hunian terbaik untuk tumbuh kembang keluarga di Palu Utara.</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+                <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto bg-blue-100 text-btn-blue rounded-full flex items-center justify-center text-xl mb-3">
+                        <i class="fas fa-road"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-800">Jalan Paving 6m</h4>
+                    <p class="text-xs text-gray-500 mt-1">Akses jalan lebar & rapi</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto bg-blue-100 text-btn-blue rounded-full flex items-center justify-center text-xl mb-3">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-800">Air Bersih Jernih</h4>
+                    <p class="text-xs text-gray-500 mt-1">Sumber air melimpah</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto bg-blue-100 text-btn-blue rounded-full flex items-center justify-center text-xl mb-3">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-800">Listrik PLN 900W</h4>
+                    <p class="text-xs text-gray-500 mt-1">Instalasi terpasang</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto bg-blue-100 text-btn-blue rounded-full flex items-center justify-center text-xl mb-3">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-800">Sarana Ibadah</h4>
+                    <p class="text-xs text-gray-500 mt-1">Masjid kompleks</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto bg-blue-100 text-btn-blue rounded-full flex items-center justify-center text-xl mb-3">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-800">Bebas Banjir</h4>
+                    <p class="text-xs text-gray-500 mt-1">Lokasi aman & tinggi</p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 mx-auto bg-blue-100 text-btn-blue rounded-full flex items-center justify-center text-xl mb-3">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-gray-800">Taman Bermain</h4>
+                    <p class="text-xs text-gray-500 mt-1">Ruang terbuka hijau</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="kontak" class="bg-btn-navy text-white pt-12 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                
+                <!-- Col 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="bg-white p-1.5 rounded flex items-center justify-center">
+                            <span class="text-btn-blue font-black text-xl">BTN</span>
+                        </div>
+                        <span class="font-bold text-lg text-white">BANUA NAGAYA</span>
+                    </div>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                        Perumahan Subsidi & Komersil terdepan di Palu Utara. Bekerja sama resmi dengan Bank BTN untuk mewujudkan hunian layak dan terjangkau bagi masyarakat Sulawesi Tengah.
+                    </p>
+                    <div class="flex space-x-3 text-gray-400">
+                        <a href="#" class="hover:text-btn-yellow transition"><i class="fab fa-facebook text-lg"></i></a>
+                        <a href="#" class="hover:text-btn-yellow transition"><i class="fab fa-instagram text-lg"></i></a>
+                        <a href="#" class="hover:text-btn-yellow transition"><i class="fab fa-youtube text-lg"></i></a>
+                        <a href="#" class="hover:text-btn-yellow transition"><i class="fab fa-whatsapp text-lg"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="font-bold text-sm text-btn-yellow uppercase tracking-wider mb-4">Navigasi Cepat</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#beranda" class="hover:text-white transition">Beranda</a></li>
+                        <li><a href="#panduan-grid" class="hover:text-white transition">Katalog Tipe Rumah</a></li>
+                        <li><a href="#kpr-simulasi" class="hover:text-white transition">Simulasi KPR BTN</a></li>
+                        <li><a href="#fasilitas" class="hover:text-white transition">Fasilitas Perumahan</a></li>
+                        <li><a href="#kontak" class="hover:text-white transition">Hubungi Sales Marketing</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="font-bold text-sm text-btn-yellow uppercase tracking-wider mb-4">Lokasi & Marketing</h4>
+                    <div class="space-y-3 text-sm text-gray-300">
+                        <p class="flex items-start gap-2">
+                            <i class="fas fa-map-marker-alt text-btn-yellow mt-1"></i>
+                            <span>Kelurahan Panau, Kecamatan Palu Utara, Kota Palu, Sulawesi Tengah</span>
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <i class="fas fa-phone text-btn-yellow"></i>
+                            <span>(0451) 829-1234</span>
+                        </p>
+                        <p class="flex items-center gap-2">
+                            <i class="fab fa-whatsapp text-btn-yellow"></i>
+                            <span>+62 821-9876-5432 (Marketing)</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="font-bold text-sm text-btn-yellow uppercase tracking-wider mb-4">Pengembang</h4>
+                    <p class="text-xs text-gray-400 mb-3">Dikembangkan oleh pengembang terpercaya mitra Bank BTN:</p>
+                    <div class="bg-blue-950/60 p-3 rounded-lg border border-blue-900">
+                        <div class="font-bold text-sm text-white">PT. KARYA BANUA NAGAYA</div>
+                        <div class="text-xs text-gray-400">Pengembang Perumahan Resmi Palu</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 pt-6 text-center text-xs text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-2">
+                <p>&copy; 2026 BTN Banua Nagaya Palu. All Rights Reserved.</p>
+                <p>Mitra Resmi Bank Tabungan Negara (BTN)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Container for Card Guides -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl transform transition-all">
+            <div id="modal-header" class="bg-btn-blue p-4 text-white flex justify-between items-center">
+                <h3 id="modal-title" class="font-bold text-lg">Detail Information</h3>
+                <button onclick="closeModal()" class="text-white hover:text-btn-yellow text-xl focus:outline-none">&times;</button>
+            </div>
+            <div id="modal-body" class="p-6 text-sm text-gray-700 space-y-4 max-h-[70vh] overflow-y-auto">
+                <!-- Content injected dynamically -->
+            </div>
+            <div class="p-4 bg-gray-50 border-t border-gray-200 flex justify-end gap-2">
+                <button onclick="closeModal()" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg text-sm font-semibold">Tutup</button>
+                <a id="modal-wa-btn" href="https://wa.me/6282198765432" target="_blank" class="px-4 py-2 bg-btn-yellow hover:bg-yellow-500 text-btn-navy font-bold rounded-lg text-sm flex items-center gap-1">
+                    <i class="fab fa-whatsapp"></i> Tanya Sales
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Toggle Mobile Menu
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Modal Content Database
+        const modalData = {
+            'modal-1': {
+                title: '1. Tipe 36/104 (Rumah Subsidi BTN)',
+                body: `
+                    <div class="space-y-3">
+                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80" class="w-full h-40 object-cover rounded-lg">
+                        <p class="font-semibold text-gray-900">Spesifikasi Bangunan Tipe 36/104:</p>
+                        <ul class="list-disc pl-5 space-y-1 text-xs">
+                            <li>Luas Bangunan: 36 m² | Luas Tanah: 104 m²</li>
+                            <li>Kamar Tidur: 2 | Kamar Mandi: 1</li>
+                            <li>Pondasi: Batu Kali & Beton Bertulang</li>
+                            <li>Dinding: Batu Bata, Plester, Aci & Cat</li>
+                            <li>Atap: Rangka Baja Ringan & Seng Gelombang / Spandek</li>
+                            <li>Lantai: Keramik 40x40 cm</li>
+                            <li>Air: Sumur Bor Jernih | Listrik: PLN 900 Watt</li>
+                        </ul>
+                        <div class="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                            <span class="text-xs font-bold text-btn-blue block">Keunggulan Utama:</span>
+                            <span class="text-xs text-gray-600">Sisa tanah belakang & samping masih sangat luas untuk pengembangan bangunan di masa depan.</span>
+                        </div>
+                    </div>
+                `
+            },
+            'modal-2': {
+                title: '2. Tipe Komersil Modern',
+                body: `
+                    <div class="space-y-3">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" class="w-full h-40 object-cover rounded-lg">
+                        <p class="font-semibold text-gray-900">Spesifikasi Tipe Komersil Premium:</p>
+                        <ul class="list-disc pl-5 space-y-1 text-xs">
+                            <li>Luas Bangunan: 45 m² - 54 m² | Luas Tanah: 120 m²</li>
+                            <li>Finishing Granit 60x60 cm & Plafon PVC Modern</li>
+                            <li>Carport Luas Berpaving & Taman Depan</li>
+                            <li>Daya Listrik 1300 Watt</li>
+                            <li>Sanitari Closet Duduk & Shower</li>
+                        </ul>
+                        <p class="text-xs text-gray-600">Cocok bagi Anda yang menginginkan kualitas hunian lebih tinggi dengan cicilan tetap terjangkau melalui KPR BTN Komersil.</p>
+                    </div>
+                `
+            },
+            'modal-4': {
+                title: '4. Lokasi Strategis Panau Palu Utara',
+                body: `
+                    <div class="space-y-3">
+                        <p class="text-xs leading-relaxed">Perumahan Banua Nagaya berlokasi di titik pertumbuhan cepat Palu Utara, menghubungkan akses perkotaan dan kawasan industri.</p>
+                        <div class="p-3 bg-gray-100 rounded-lg text-xs space-y-2">
+                            <div class="font-bold text-gray-800">Aksesibilitas Terdekat:</div>
+                            <div><i class="fas fa-check text-green-600 me-2"></i>5 Menit ke Pasar Tradisional & Pusat Perbelanjaan</div>
+                            <div><i class="fas fa-check text-green-600 me-2"></i>3 Menit ke SD, SMP & SMA Negeri Palu Utara</div>
+                            <div><i class="fas fa-check text-green-600 me-2"></i>7 Menit ke Puskesmas & Klinik Kesehatan</div>
+                            <div><i class="fas fa-check text-green-600 me-2"></i>Akses Jalan Utama Bebas Macet</div>
+                        </div>
+                    </div>
+                `
+            },
+            'modal-5': {
+                title: '5. Fasilitas Kawasan Perumahan',
+                body: `
+                    <div class="space-y-3">
+                        <p class="text-xs text-gray-600">Kami menyediakan infrastruktur terbaik agar lingkungan nyaman dan aman untuk penghuni:</p>
+                        <ul class="list-disc pl-5 text-xs space-y-1">
+                            <li>Jalan Utama & Lingkungan menggunakan Paving Block presisi tinggi.</li>
+                            <li>Drainase tertutup dan rapi untuk mencegah genangan air.</li>
+                            <li>Penerangan Jalan Umum (PJU) terpasang di setiap sudut.</li>
+                            <li>Area hijau terbuka & tempat bermain anak.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'modal-6': {
+                title: '6. Promo & Paket Spesial Bulan Ini',
+                body: `
+                    <div class="space-y-3">
+                        <div class="p-3 bg-yellow-50 border border-btn-yellow rounded-lg">
+                            <h4 class="font-bold text-btn-navy text-xs">PROMO SPESIAL BOOKING MINGGU INI:</h4>
+                            <ul class="list-disc pl-4 text-xs mt-1 space-y-1 text-gray-700">
+                                <li>Subsidi Uang Muka (DP Cuma 1%)</li>
+                                <li>Free Biaya Notaris & BPHTB</li>
+                                <li>Bonus Langsung: Kanopi Depan / Pompa Air Listrik</li>
+                                <li>Proses Berkas Dibantu Sampai ACC Bank</li>
+                            </ul>
+                        </div>
+                    </div>
+                `
+            },
+            'modal-7': {
+                title: '7. Alur Pembelian & Pengajuan KPR BTN',
+                body: `
+                    <div class="space-y-3 text-xs">
+                        <ol class="list-decimal pl-4 space-y-2 text-gray-700">
+                            <li><strong>Pilih Unit & Booking Fee:</strong> Pilih lokasi kavling rumah impian Anda.</li>
+                            <li><strong>Pemberkasan KPR:</strong> Melengkapi KTP, KK, NPWP, Slip Gaji / Surat Keterangan Usaha (SKU).</li>
+                            <li><strong>Proses Analisa Bank BTN:</strong> Verifikasi data dan kelayakan kredit oleh tim bank.</li>
+                            <li><strong>Wawancara & SP3K:</strong> Penerbitan surat persetujuan kredit dari Bank BTN.</li>
+                            <li><strong>Akad Kredit & Serah Terima Kunci:</strong> Penandatanganan berkas resmi & terima kunci rumah baru Anda!</li>
+                        </ol>
+                    </div>
+                `
+            }
+        };
+
+        function openModal(key) {
+            const data = modalData[key];
+            if (!data) return;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-body').innerHTML = data.body;
+            document.getElementById('modal-overlay').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal-overlay').classList.add('hidden');
+        }
+
+        function scrollToCalc() {
+            document.getElementById('kpr-simulasi').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // KPR Calculator Logic
+        let kprType = 'subsidi';
+
+        function setKprType(type) {
+            kprType = type;
+            const btnSubsidi = document.getElementById('btn-subsidi');
+            const btnKomersil = document.getElementById('btn-komersil');
+            const hargaInput = document.getElementById('harga');
+
+            if (type === 'subsidi') {
+                btnSubsidi.className = "py-2 px-4 rounded-lg border-2 border-btn-blue bg-blue-50 text-btn-blue font-bold text-sm text-center";
+                btnKomersil.className = "py-2 px-4 rounded-lg border-2 border-gray-200 text-gray-600 font-bold text-sm text-center hover:border-btn-blue";
+                hargaInput.value = 168000000;
+            } else {
+                btnKomersil.className = "py-2 px-4 rounded-lg border-2 border-btn-blue bg-blue-50 text-btn-blue font-bold text-sm text-center";
+                btnSubsidi.className = "py-2 px-4 rounded-lg border-2 border-gray-200 text-gray-600 font-bold text-sm text-center hover:border-btn-blue";
+                hargaInput.value = 280000000;
+            }
+            calculateKPR();
+        }
+
+        function formatRupiah(num) {
+            return 'Rp ' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function calculateKPR() {
+            const harga = parseFloat(document.getElementById('harga').value);
+            const dpPercent = parseFloat(document.getElementById('dp').value);
+            const tenorYears = parseInt(document.getElementById('tenor').value);
+
+            const interestRate = (kprType === 'subsidi') ? 0.05 : 0.085; // 5% or 8.5%
+            
+            const dpAmount = harga * (dpPercent / 100);
+            const plafon = harga - dpAmount;
+            const totalMonths = tenorYears * 12;
+
+            // Monthly interest formula: P * (r*(1+r)^n) / ((1+r)^n - 1)
+            const monthlyRate = interestRate / 12;
+            const monthlyInstallment = (plafon * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+
+            // Update UI
+            document.getElementById('harga-val').innerText = formatRupiah(harga);
+            document.getElementById('dp-val').innerText = `${dpPercent}% (${formatRupiah(dpAmount)})`;
+            document.getElementById('plafon-txt').innerText = formatRupiah(plafon);
+            document.getElementById('bunga-txt').innerText = (interestRate * 100).toFixed(1) + '% Fixed';
+            document.getElementById('dp-txt').innerText = formatRupiah(dpAmount);
+            document.getElementById('angsuran-val').innerText = formatRupiah(monthlyInstallment) + '/bln';
+
+            // Update WhatsApp Link
+            const waMsg = encodeURIComponent(`Halo Marketing BTN Banua Nagaya, saya berminat dengan Simulasi KPR:\n- Tipe: ${kprType.toUpperCase()}\n- Harga Rumah: ${formatRupiah(harga)}\n- DP: ${dpPercent}% (${formatRupiah(dpAmount)})\n- Tenor: ${tenorYears} Tahun\n- Estimasi Angsuran: ${formatRupiah(monthlyInstallment)}/bulan.\n\nMohon info ketersediaan unit dan jadwal survey.`);
+            document.getElementById('wa-kpr-btn').href = `https://wa.me/6282198765432?text=${waMsg}`;
+        }
+
+        // Initial Calc on load
+        window.onload = function() {
+            calculateKPR();
+        };
+    </script>
+</body>
+</html>
