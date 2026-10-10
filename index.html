@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
+     <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Widget Chat Tapera WhatsApp</title>
+  <!-- FontAwesome untuk Icon Close/X -->
+  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BTN Banua Nagaya - Perumahan Ready Stock Palu Utara</title>
@@ -221,6 +226,227 @@
     box-shadow: 0 6px 18px rgba(13, 71, 161, 0.4);
   }
 </style>
+<style>
+    /* Styling Dasar Widget Chat Melayang */
+    #tapera-chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999999;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Tombol Toggle Melayang (Gambar 2) */
+    .chat-toggle-btn {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .chat-toggle-btn:hover {
+      transform: scale(1.03);
+    }
+
+    .chat-toggle-text {
+      background-color: #5BB24A;
+      color: #ffffff;
+      padding: 8px 18px 8px 16px;
+      border-radius: 12px 0px 0px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.3;
+      max-width: 200px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-right: -15px; /* Overlap dengan logo */
+      z-index: 1;
+    }
+
+    .chat-toggle-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background-color: #0d2b45;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 2;
+      overflow: hidden;
+      border: 2px solid #ffffff;
+    }
+
+    .chat-toggle-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Kotak Popup Formulir Chat (Gambar 1) */
+    .chat-popup-box {
+      display: none; /* Tersembunyi saat awal */
+      width: 320px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      flex-direction: column;
+      animation: fadeInUp 0.3s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Header Popup Hijau */
+    .chat-header {
+      background-color: #5BB24A;
+      color: #ffffff;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chat-header-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #0d2b45;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .chat-header-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .chat-header-title {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .chat-header-subtitle {
+      font-size: 11px;
+      opacity: 0.9;
+      margin-top: 3px;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .chat-close-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 16px;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+      padding: 0;
+      margin-left: 10px;
+    }
+
+    .chat-close-btn:hover {
+      opacity: 1;
+    }
+
+    /* Body Popup & Inner Box */
+    .chat-body {
+      padding: 16px;
+      background-color: #ffffff;
+    }
+
+    .chat-form-container {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 16px;
+      background-color: #ffffff;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #333333;
+      margin-bottom: 6px;
+    }
+
+    .form-group label .required {
+      color: #e53e3e;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 13px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: #5BB24A;
+    }
+
+    .btn-submit {
+      width: 100px;
+      background-color: #5BB24A;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-top: 4px;
+    }
+
+    .btn-submit:hover {
+      background-color: #4a983c;
+    }
+
+    .chat-footer-credits {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 11px;
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .chat-footer-credits img {
+      height: 14px;
+      vertical-align: middle;
+    }
+  </style>
 
   <!-- Kode CSS Slider -->
   <style>
@@ -1644,5 +1870,110 @@ body {
 </script>
 
 </div></div>
+<!-- ================= WIDGET CHAT TAPERA ================= -->
+  <div id="tapera-chat-widget">
+    
+    <!-- 1. TOMBOL MELAYANG (Awal) -->
+    <div id="chat-toggle-btn" class="chat-toggle-btn" onclick="toggleChatWidget()">
+      <div class="chat-toggle-text">
+        Halo, ada yang bisa dibantu oleh Admin BTN Banua Nagaya?
+      </div>
+      <div class="chat-toggle-icon">
+        <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791620274/wa-banua_vi25nk.png" 
+             alt="Logo Tapera" 
+             onerror="this.onerror=null; this.src='https://via.placeholder.com/55?text=Tapera';">
+      </div>
+    </div>
+
+    <!-- 2. JENDELA FORMULIR POPUP -->
+    <div id="chat-popup-box" class="chat-popup-box">
+      <!-- Header -->
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-header-avatar">
+            <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791620274/wa-banua_vi25nk.png" 
+                 alt="Logo Tapera" 
+                 onerror="this.onerror=null; this.src='https://via.placeholder.com/40?text=Tapera';">
+          </div>
+          <div>
+            <div class="chat-header-title">Contact Center BTN Banua Nagaya</div>
+            <span class="chat-header-subtitle">Silakan isi formulir di bawah ini untuk mulai mengobrol.</span>
+          </div>
+        </div>
+        <button class="chat-close-btn" onclick="toggleChatWidget()" title="Tutup">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Body Form -->
+      <div class="chat-body">
+        <div class="chat-form-container">
+          <form onsubmit="sendWhatsApp(event)">
+            
+            <div class="form-group">
+              <label for="name">Name <span class="required">*</span></label>
+              <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" class="form-control" placeholder="Enter your email address" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required pattern="^\+?\d{8,15}">
+            </div>
+
+            <button type="submit" class="btn-submit">Submit</button>
+
+            <div class="chat-footer-credits">
+              <span>By Syam</span>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- ================= END WIDGET CHAT ================= -->
+
+  <!-- SCRIPT UNTUK FUNGSI INTERAKTIF -->
+  <script>
+    // Buka / Tutup Popup Widget
+    function toggleChatWidget() {
+      const toggleBtn = document.getElementById('chat-toggle-btn');
+      const popupBox = document.getElementById('chat-popup-box');
+
+      if (popupBox.style.display === 'none' || popupBox.style.display === '') {
+        popupBox.style.display = 'flex';
+        toggleBtn.style.display = 'none';
+      } else {
+        popupBox.style.display = 'none';
+        toggleBtn.style.display = 'flex';
+      }
+    }
+
+    // Kirim Data Formulir ke WhatsApp
+    function sendWhatsApp(event) {
+      event.preventDefault(); // Mencegah reload halaman
+
+      const targetPhone = "6285150531572"; // Nomor WhatsApp Tujuan
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+
+      // Format Pesan WhatsApp
+      const message = `Halo Contact Center Tapera,\n\nSaya ingin berkonsultasi/bertanya:\n\n*Nama:* ${name}\n*Email:* ${email}\n*No. HP:* ${phone}`;
+
+      // Encode URL untuk WhatsApp
+      const waUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`;
+
+      // Buka link WhatsApp di tab baru
+      window.open(waUrl, '_blank');
+    }
+  </script>
+
 </body>
 </html>
