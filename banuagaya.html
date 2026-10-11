@@ -106,23 +106,10 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        .btn-test {
-            background-color: #0056b3;
-            color: white;
-            padding: 10px 18px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            margin-top: 15px;
-        }
-        .btn-test:hover {
-            background-color: #004085;
-        }
 
-        /* --- STYLING POP-UP --- */
+        /* --- STYLING POP-UP (Gaya Modern & Rapi) --- */
         .popup-overlay {
-            display: none; /* Disembunyikan secara default */
+            display: none; /* Disembunyikan secara default, muncul otomatis setelah 5 detik */
             position: fixed;
             top: 0;
             left: 0;
@@ -132,90 +119,138 @@
             z-index: 9999;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.4s ease;
+            animation: fadeIn 0.3s ease;
         }
 
         .popup-card {
             background: #ffffff;
             width: 90%;
-            max-width: 500px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 550px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
-            animation: scaleUp 0.4s ease;
+            animation: scaleUp 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
         }
 
+        /* Header Biru Tua Sesuai Referensi */
         .popup-header {
-            background: linear-gradient(135deg, #0056b3, #0080ff);
+            background-color: #0b3c65;
             color: #fff;
-            padding: 20px;
-            text-align: center;
+            padding: 16px 20px;
             font-size: 1.1rem;
             font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
+        .popup-close-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.4rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 4px;
+        }
+
+        .popup-close-btn:hover {
+            color: #ffdd57;
+        }
+
+        /* Area Konten & Gambar */
         .popup-body {
-            padding: 25px;
-            max-height: 60vh;
+            padding: 20px;
             overflow-y: auto;
-            line-height: 1.6;
             font-size: 0.95rem;
-            color: #444;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .popup-image-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            background-color: #eaeaea;
+        }
+
+        .popup-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .popup-body h3 {
             margin-top: 0;
-            color: #0056b3;
-            font-size: 1.2rem;
+            color: #0b3c65;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
         }
 
+        .popup-body ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        .popup-body li {
+            margin-bottom: 6px;
+        }
+
+        .note-text {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        /* Footer dengan Tombol Tutup & Tanya Sales */
         .popup-footer {
-            padding: 15px 25px;
-            background: #f9f9f9;
-            text-align: center;
-            border-top: 1px solid #eee;
-        }
-
-        .btn-booking {
-            background-color: #28a745;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.3s ease;
-            box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
-        }
-
-        .btn-booking:hover {
-            background-color: #218838;
-        }
-
-        .popup-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: #fff;
-            font-size: 1.2rem;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
+            padding: 15px 20px;
+            background: #f8f9fa;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            justify-content: flex-end;
+            gap: 10px;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .btn-tutup {
+            background-color: #e2e6ea;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
             transition: background 0.2s;
         }
 
-        .popup-close:hover {
-            background: rgba(255, 255, 255, 0.4);
+        .btn-tutup:hover {
+            background-color: #cbd3da;
+        }
+
+        .btn-sales {
+            background-color: #ffc107;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+
+        .btn-sales:hover {
+            background-color: #e0a800;
         }
 
         /* Animasi */
@@ -225,7 +260,7 @@
         }
 
         @keyframes scaleUp {
-            from { transform: scale(0.8); opacity: 0; }
+            from { transform: scale(0.9); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
     </style>
@@ -979,69 +1014,79 @@
   </svg>
   <span class="home-text">HOME</span>
 </a>
-<!-- Konten Dashboard Anda -->
-    <div class="dashboard-content">
-        <h1>Selamat Datang di Dashboard Anda</h1>
-        <p>Pop-up penawaran spesial rumah impian akan muncul secara otomatis setelah <strong>10 detik</strong> halaman dibuka.</p>
-        <!-- Tombol opsional untuk tes instan -->
-        <button class="btn-test" id="testBtn">Tes Muncul Pop-up Sekarang</button>
-    </div>
-
-    <!-- STRUKTUR HTML POP-UP -->
+<!-- STRUKTUR HTML POP-UP -->
     <div class="popup-overlay" id="promoPopup">
         <div class="popup-card">
-            <button class="popup-close" id="closePopup">&times;</button>
+            <!-- Header dengan Judul & Tombol Silang (×) -->
             <div class="popup-header">
-                ✨ BTN BANUA NAGAYA ✨
+                <span>🏡 BTN Banua Nagaya</span>
+                <button class="popup-close-btn" id="closeTopBtn">&times;</button>
             </div>
+
+            <!-- Konten Pop-up -->
             <div class="popup-body">
-                <h3>🏡 Wujudkan Rumah Impian Keluarga, Mulai dari Booking Hanya 1,5 Juta!</h3>
+                <!-- Banner Gambar Rumah -->
+                <div class="popup-image-container">
+                    <!-- Ganti link src dengan gambar rumah/perumahan Anda -->
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Rumah Impian">
+                </div>
+
+                <h3>Wujudkan Rumah Impian Keluarga, Mulai dari Booking Hanya 1,5 Juta!</h3>
                 <p>Punya rumah sendiri kini bukan sekadar impian! Saatnya wujudkan hunian nyaman untuk keluarga tercinta bersama <strong>BTN Banua Nagaya</strong>. ❤️</p>
                 
-                <p>💰 <strong>Cukup booking Rp1,5 juta di awal!</strong> Langkah kecil hari ini bisa menjadi awal perjalanan besar menuju rumah idaman Anda dan keluarga.</p>
+                <ul>
+                    <li>💰 <strong>Cukup booking Rp1,5 juta di awal!</strong> Langkah kecil menuju rumah idaman.</li>
+                    <li>🏡 Hunian nyaman, asri, dan strategis untuk tempat berkumpul keluarga tercinta.</li>
+                    <li>👨‍👩‍👧‍👦 Bangun masa depan bahagia bersama orang-orang tersayang.</li>
+                </ul>
+
+                <p>Jangan tunggu sampai nanti, kesempatan memiliki rumah impian dimulai dari langkah pertama!</p>
                 
-                <p>Bayangkan kebahagiaan memiliki tempat tinggal sendiri, tempat berkumpul, berbagi cerita, dan membangun masa depan bersama orang-orang tersayang. 🏡👨‍👩‍👧‍👦</p>
-                
-                <p>Jangan tunggu sampai nanti, karena kesempatan memiliki rumah impian dimulai dari langkah pertama!</p>
-                
-                <p style="font-size: 0.85rem; color: #775555; margin-top: 15px;"><em>*Catatan: Syarat dan ketentuan berlaku. Pastikan detail promo dikonfirmasi kepada pihak pengembang.</em></p>
+                <p class="note-text">*Catatan: Syarat dan ketentuan berlaku. Pastikan detail promo dikonfirmasi kepada pihak pengembang.</p>
             </div>
+
+            <!-- Footer Tombol -->
             <div class="popup-footer">
-                <!-- Ganti link href dengan nomor WhatsApp Anda -->
-                <a href="https://wa.me/6285150531572?text=Halo%2C%20saya%20ingin%20booking%20rumah%20BTN%20Banua%20Nagaya%20Rp1.5%20juta" target="_blank" class="btn-booking">📲 Booking Sekarang!</a>
+                <button class="btn-tutup" id="closeBottomBtn">Tutup</button>
+                <!-- Ganti link href dengan link WhatsApp sales Anda -->
+                <a href="https://wa.me/628xxxxxxxxxx?text=Halo%2C%20saya%20tertarik%20dengan%20promo%20booking%201.5%20juta%20BTN%20Banua%20Nagaya" target="_blank" class="btn-sales">
+                    💬 Tanya Sales
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT: DURASI 10 DETIK -->
+    <!-- JAVASCRIPT: OTOMATIS MUNCUL DALAM 5 DETIK -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const popup = document.getElementById("promoPopup");
-            const closeBtn = document.getElementById("closePopup");
-            const testBtn = document.getElementById("testBtn");
+            const closeTopBtn = document.getElementById("closeTopBtn");
+            const closeBottomBtn = document.getElementById("closeBottomBtn");
 
-            // 10 Detik = 10 * 1000 milidetik = 10000 ms
-            const delayTime = 10 * 1000; 
+            // 5 Detik = 5 * 1000 milidetik = 5000 ms
+            const delayTime = 5 * 1000; 
 
-            // Timer utama: Muncul otomatis setelah 10 detik
+            // Timer otomatis muncul setelah 5 detik
             setTimeout(function() {
+                // Cek apakah di sesi ini user sudah menutup pop-up
                 if (!sessionStorage.getItem("popupClosed")) {
                     popup.style.display = "flex";
                 }
             }, delayTime);
 
-            // Tombol Tes (Opsional, untuk mencoba pop-up tanpa menunggu 10 detik)
-            testBtn.addEventListener("click", function() {
-                popup.style.display = "flex";
-            });
-
-            // Fungsi untuk menutup pop-up saat tombol (×) diklik
-            closeBtn.addEventListener("click", function() {
+            // Fungsi untuk menutup pop-up (Tombol Silang atas)
+            closeTopBtn.addEventListener("click", function() {
                 popup.style.display = "none";
                 sessionStorage.setItem("popupClosed", "true");
             });
 
-            // Tutup pop-up jika pengguna mengklik area luar kotak
+            // Fungsi untuk menutup pop-up (Tombol Tutup bawah)
+            closeBottomBtn.addEventListener("click", function() {
+                popup.style.display = "none";
+                sessionStorage.setItem("popupClosed", "true");
+            });
+
+            // Tutup pop-up jika pengguna mengklik area luar kotak pop-up (backdrop)
             window.addEventListener("click", function(event) {
                 if (event.target === popup) {
                     popup.style.display = "none";
