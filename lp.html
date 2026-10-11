@@ -18,6 +18,7 @@
                         brandBlueDark: '#003e75',
                         brandOrange: '#f37021',
                         brandOrangeDark: '#d95a0d',
+                        topBarBlue: '#034ba9',
                         faqBg: '#111827',
                         faqCard: '#1f293d'
                     }
@@ -34,14 +35,18 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #cbd5e1;
         }
+        /* Lebar container max 600px */
         .app-container {
-            max-width: 480px;
+            max-width: 600px;
             margin: 0 auto;
             background-color: #ffffff;
             box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
             min-height: 100vh;
             position: relative;
-            padding-bottom: 90px;
+            padding-bottom: 95px;
+            border-top-left-radius: 28px;
+            border-top-right-radius: 28px;
+            overflow: hidden;
         }
         .carousel-item {
             transition: opacity 0.4s ease-in-out;
@@ -56,61 +61,69 @@
         }
         .faq-answer.open {
             max-height: 500px;
-            padding-top: 0.75rem;
-            padding-bottom: 0.75rem;
+            padding-top: 0.85rem;
+            padding-bottom: 0.85rem;
         }
         .rotate-180 {
             transform: rotate(180deg);
         }
     </style>
 </head>
-<body class="antialiased text-gray-800">
+<body class="antialiased text-gray-800 pt-3 sm:pt-6">
 
     <div class="app-container">
         
-        <!-- HEADER / LOGO -->
-        <header class="bg-white py-3 px-4 border-b border-gray-200 sticky top-0 z-40 shadow-sm flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791730539/logo-kbn_qrbqoh.png" alt="Logo KBN" class="h-10 object-contain">
-                <div class="h-8 w-[1px] bg-gray-300"></div>
-                <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791730537/logo-banua-nagaya_qzzgjz.png" alt="BTN Banua Nagaya Logo" class="h-10 object-contain">
+        <!-- TOP PROMO BAR (HEADER ATAS) -->
+        <div class="bg-topBarBlue text-white py-2.5 px-4 text-center flex items-center justify-center gap-2 text-xs sm:text-sm font-bold shadow-inner">
+            <span class="bg-[#a3683a] text-white text-[10px] sm:text-xs px-2.5 py-0.5 rounded font-extrabold tracking-wide uppercase">
+                PROMO SPESIAL
+            </span>
+            <span>Subsidi DP 0% &amp; Free Biaya Akad!</span>
+        </div>
+
+        <!-- LOGO SECTION (CENTERED) -->
+        <header class="bg-white pt-6 pb-2 px-4 text-center">
+            <div class="inline-flex items-center justify-center gap-3 sm:gap-4 mb-4">
+                <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791730539/logo-kbn_qrbqoh.png" alt="Logo KBN" class="h-12 sm:h-14 object-contain">
+                <div class="h-9 w-[1px] bg-gray-300"></div>
+                <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791730537/logo-banua-nagaya_qzzgjz.png" alt="BTN Banua Nagaya Logo" class="h-12 sm:h-14 object-contain">
             </div>
-            <a href="#form-section" class="bg-brandOrange text-white text-xs font-bold px-3 py-2 rounded-full hover:bg-brandOrangeDark transition flex items-center gap-1 shadow">
-                <i class="fa-solid fa-house"></i> Minat!
-            </a>
+
+            <!-- JUDUL UTAMA -->
+            <h1 class="text-base sm:text-lg font-black text-brandBlue uppercase tracking-wide">
+                BTN BANUA NAGAYA - PANAU - PALU UTARA
+            </h1>
+
+            <!-- DESKRIPSI PERKENALAN -->
+            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium mt-3 max-w-lg mx-auto">
+                <strong class="text-brandBlue font-extrabold">BTN Banua Nagaya</strong> hadir sebagai kawasan hunian nyaman, aman, modern, dan terjangkau, dirancang untuk memenuhi kebutuhan keluarga serta menjadi tempat tumbuh kehidupan dan masa depan yang lebih baik di <span class="text-brandOrange font-extrabold">Panau - Palu Utara.</span>
+            </p>
         </header>
 
-        <!-- TEKS PERKENALAN UTAMA -->
-        <section class="p-4 bg-white text-center">
-            <p class="text-xs text-gray-700 leading-relaxed font-medium">
-                <strong class="text-brandBlue font-extrabold">BTN Banua Nagaya</strong> hadir sebagai kawasan hunian nyaman, aman, modern, dan terjangkau, dirancang untuk memenuhi kebutuhan keluarga serta menjadi tempat tumbuhnya kehidupan dan masa depan yang lebih baik.[cite: 1, 3]
-            </p>
-        </section>
-
         <!-- BANNER IKLAN PROMO UTAMA -->
-        <section class="px-4 pb-4 bg-white">
+        <section class="p-5 bg-white">
             <div class="rounded-2xl overflow-hidden shadow-lg border border-gray-200">
                 <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791731543/foto-iklan-banua-nagaya_ok_trbzwa.png" alt="Promo Luar Biasa BTN Banua Nagaya" class="w-full h-auto object-cover">
             </div>
         </section>
 
         <!-- BROSUR DOKUMEN PERUMAHAN -->
-        <section class="p-4 bg-gray-50 border-y border-gray-200">
+        <section class="p-5 bg-gray-50 border-y border-gray-200">
             <div class="text-center mb-3">
-                <span class="bg-blue-100 text-brandBlue text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">
+                <span class="bg-blue-100 text-brandBlue text-xs font-bold px-3 py-1 rounded-full uppercase">
                     <i class="fa-solid fa-file-image mr-1"></i> Informasi Lengkap
                 </span>
-                <h2 class="text-base font-extrabold text-gray-800 mt-1">Brosur Perumahan</h2>
+                <h2 class="text-lg font-extrabold text-gray-800 mt-1.5">Brosur Perumahan</h2>
             </div>
-            <div class="rounded-2xl overflow-hidden shadow-md border border-gray-200 bg-white p-1">
+            <div class="rounded-2xl overflow-hidden shadow-md border border-gray-200 bg-white p-1.5">
                 <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791731543/Brosur-Banua-nagaya_qlym24.png" alt="Brosur BTN Banua Nagaya" class="w-full h-auto rounded-xl">
             </div>
         </section>
 
         <!-- SLIDER / CAROUSEL FOTO -->
-        <section class="p-4 bg-white border-b border-gray-200">
-            <div class="flex justify-between items-center mb-2">
-                <h2 class="text-sm font-bold text-gray-800 uppercase flex items-center gap-2">
+        <section class="p-5 bg-white border-b border-gray-200">
+            <div class="flex justify-between items-center mb-3">
+                <h2 class="text-sm sm:text-base font-bold text-gray-800 uppercase flex items-center gap-2">
                     <i class="fa-solid fa-images text-brandOrange"></i> Galeri Perumahan
                 </h2>
                 <span class="text-xs text-gray-500 font-medium">Geser untuk melihat <i class="fa-solid fa-arrow-right"></i></span>
@@ -118,7 +131,7 @@
 
             <div class="relative overflow-hidden rounded-2xl shadow-md bg-gray-900 group">
                 <!-- Slides Container -->
-                <div id="carouselSlides" class="relative min-h-[260px] sm:min-h-[300px]">
+                <div id="carouselSlides" class="relative min-h-[300px] sm:min-h-[360px]">
                     <div class="carousel-item absolute inset-0 opacity-100 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791644916/banuagaya01_k5cacd.jpg" alt="Foto Perumahan 1" class="w-full h-full object-cover">
                     </div>
@@ -137,65 +150,65 @@
                 </div>
 
                 <!-- Navigation Buttons -->
-                <button id="prevBtn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white w-8 h-8 rounded-full flex items-center justify-center transition">
-                    <i class="fa-solid fa-chevron-left text-sm"></i>
+                <button id="prevBtn" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white w-9 h-9 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-chevron-left text-base"></i>
                 </button>
-                <button id="nextBtn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white w-8 h-8 rounded-full flex items-center justify-center transition">
-                    <i class="fa-solid fa-chevron-right text-sm"></i>
+                <button id="nextBtn" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white w-9 h-9 rounded-full flex items-center justify-center transition">
+                    <i class="fa-solid fa-chevron-right text-base"></i>
                 </button>
 
                 <!-- Indicator Dots -->
-                <div id="dotsContainer" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1.5 z-10"></div>
+                <div id="dotsContainer" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-10"></div>
             </div>
         </section>
 
         <!-- HIGHLIGHT KEUNGGULAN -->
-        <section class="p-4 bg-gray-50 border-b border-gray-200">
-            <h2 class="text-center font-bold text-gray-900 text-base mb-3 uppercase tracking-wide">
+        <section class="p-5 bg-gray-50 border-b border-gray-200">
+            <h2 class="text-center font-bold text-gray-900 text-base sm:text-lg mb-4 uppercase tracking-wide">
                 Mengapa Memilih <span class="text-brandBlue">Banua Nagaya?</span>
             </h2>
-            <div class="grid grid-cols-2 gap-3">
-                <div class="p-3 bg-white rounded-xl border border-gray-200 shadow-sm flex items-start gap-2.5">
-                    <div class="bg-brandBlue text-white p-2 rounded-lg text-xs mt-0.5"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="grid grid-cols-2 gap-3.5">
+                <div class="p-3.5 bg-white rounded-xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <div class="bg-brandBlue text-white p-2.5 rounded-lg text-sm mt-0.5"><i class="fa-solid fa-shield-halved"></i></div>
                     <div>
-                        <h3 class="font-bold text-xs text-gray-800">Bebas Banjir</h3>
-                        <p class="text-[10px] text-gray-500">Lokasi tinggi & drainase rapi</p>
+                        <h3 class="font-bold text-xs sm:text-sm text-gray-800">Bebas Banjir</h3>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Lokasi tinggi & drainase rapi</p>
                     </div>
                 </div>
-                <div class="p-3 bg-white rounded-xl border border-gray-200 shadow-sm flex items-start gap-2.5">
-                    <div class="bg-brandOrange text-white p-2 rounded-lg text-xs mt-0.5"><i class="fa-solid fa-road"></i></div>
+                <div class="p-3.5 bg-white rounded-xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <div class="bg-brandOrange text-white p-2.5 rounded-lg text-sm mt-0.5"><i class="fa-solid fa-road"></i></div>
                     <div>
-                        <h3 class="font-bold text-xs text-gray-800">Akses Mudah</h3>
-                        <p class="text-[10px] text-gray-500">Akses jalan luas Palu Utara</p>
+                        <h3 class="font-bold text-xs sm:text-sm text-gray-800">Akses Mudah</h3>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Akses jalan luas Palu Utara</p>
                     </div>
                 </div>
-                <div class="p-3 bg-white rounded-xl border border-gray-200 shadow-sm flex items-start gap-2.5">
-                    <div class="bg-emerald-600 text-white p-2 rounded-lg text-xs mt-0.5"><i class="fa-solid fa-wallet"></i></div>
+                <div class="p-3.5 bg-white rounded-xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <div class="bg-emerald-600 text-white p-2.5 rounded-lg text-sm mt-0.5"><i class="fa-solid fa-wallet"></i></div>
                     <div>
-                        <h3 class="font-bold text-xs text-gray-800">DP Terjangkau</h3>
-                        <p class="text-[10px] text-gray-500">Proses KPR dibantu penuh</p>
+                        <h3 class="font-bold text-xs sm:text-sm text-gray-800">DP Terjangkau</h3>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Proses KPR dibantu penuh</p>
                     </div>
                 </div>
-                <div class="p-3 bg-white rounded-xl border border-gray-200 shadow-sm flex items-start gap-2.5">
-                    <div class="bg-purple-600 text-white p-2 rounded-lg text-xs mt-0.5"><i class="fa-solid fa-key"></i></div>
+                <div class="p-3.5 bg-white rounded-xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <div class="bg-purple-600 text-white p-2.5 rounded-lg text-sm mt-0.5"><i class="fa-solid fa-key"></i></div>
                     <div>
-                        <h3 class="font-bold text-xs text-gray-800">Siap Huni</h3>
-                        <p class="text-[10px] text-gray-500">Kualitas bangunan terbaik</p>
+                        <h3 class="font-bold text-xs sm:text-sm text-gray-800">Siap Huni</h3>
+                        <p class="text-[11px] text-gray-500 mt-0.5">Kualitas bangunan terbaik</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- VIDEO SHORTS -->
-        <section class="p-4 bg-white border-b border-gray-200">
-            <div class="text-center mb-3">
-                <span class="bg-red-100 text-red-600 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">
+        <section class="p-5 bg-white border-b border-gray-200">
+            <div class="text-center mb-4">
+                <span class="bg-red-100 text-red-600 text-xs font-bold px-3 py-1 rounded-full uppercase">
                     <i class="fa-brands fa-youtube mr-1"></i> Video Tour
                 </span>
-                <h2 class="text-base font-extrabold text-gray-800 mt-1">Lihat Suasana Lokasi</h2>
+                <h2 class="text-lg font-extrabold text-gray-800 mt-1.5">Lihat Suasana Lokasi</h2>
             </div>
             
-            <div class="relative w-full aspect-youtube max-w-[300px] mx-auto rounded-2xl overflow-hidden shadow-lg border-2 border-white">
+            <div class="relative w-full aspect-youtube max-w-[340px] mx-auto rounded-2xl overflow-hidden shadow-lg border-2 border-white">
                 <iframe 
                     class="w-full h-full"
                     src="https://www.youtube.com/embed/tM-kCwLi9E0?rel=0" 
@@ -208,17 +221,17 @@
         </section>
 
         <!-- PETA LOKASI -->
-        <section class="p-4 bg-gray-50 border-b border-gray-200">
-            <div class="text-center mb-3">
-                <span class="bg-blue-100 text-brandBlue text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">
+        <section class="p-5 bg-gray-50 border-b border-gray-200">
+            <div class="text-center mb-4">
+                <span class="bg-blue-100 text-brandBlue text-xs font-bold px-3 py-1 rounded-full uppercase">
                     <i class="fa-solid fa-map-location-dot mr-1"></i> Lokasi Presisi
                 </span>
-                <h2 class="text-base font-extrabold text-gray-800 mt-1">Peta Lokasi Perumahan</h2>
-                <p class="text-xs text-gray-500">Panau, Kec. Palu Utara, Kota Palu, Sulawesi Tengah</p>
+                <h2 class="text-lg font-extrabold text-gray-800 mt-1.5">Peta Lokasi Perumahan</h2>
+                <p class="text-xs text-gray-500 mt-0.5">Panau, Kec. Palu Utara, Kota Palu, Sulawesi Tengah</p>
             </div>
 
             <!-- Embed Google Maps -->
-            <div class="relative w-full rounded-2xl overflow-hidden shadow-md border border-gray-200 h-[280px]">
+            <div class="relative w-full rounded-2xl overflow-hidden shadow-md border border-gray-200 h-[320px]">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.478657830417!2d119.8590344737244!3d-0.7476321352720232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d8bc184b2e35af5%3A0x57775b7275046a10!2sBTN.Banua%20Nagaya!5e0!3m2!1sid!2sid!4v1791731026219!5m2!1sid!2sid" 
                     width="100%" 
@@ -230,83 +243,83 @@
                 </iframe>
             </div>
 
-            <div class="mt-3 text-center">
-                <a href="https://maps.app.goo.gl/BTN.BanuaNagaya" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-gray-800 text-xs font-bold py-2.5 px-4 rounded-xl transition w-full border border-gray-300 shadow-sm">
+            <div class="mt-4 text-center">
+                <a href="https://maps.app.goo.gl/BTN.BanuaNagaya" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-gray-800 text-xs sm:text-sm font-bold py-3 px-4 rounded-xl transition w-full border border-gray-300 shadow-sm">
                     <i class="fa-solid fa-diamond-turn-right text-brandOrange"></i> Buka Petunjuk Arah di Google Maps
                 </a>
             </div>
         </section>
 
         <!-- FAQ SECTION ALA GAMBAR REFERENSI -->
-        <section class="p-5 bg-faqBg text-white">
+        <section class="p-6 bg-faqBg text-white">
             <div class="text-center mb-6">
                 <span class="text-emerald-400 text-xs font-bold uppercase tracking-widest block mb-1">FAQ</span>
-                <h2 class="text-2xl font-black text-white tracking-tight">Pertanyaan yang Sering Diajukan</h2>
-                <p class="text-xs text-gray-400 mt-2">Temukan informasi lengkap seputar perumahan BTN Banua Nagaya di sini.</p>
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Pertanyaan yang Sering Diajukan</h2>
+                <p class="text-xs sm:text-sm text-gray-400 mt-2">Temukan informasi lengkap seputar perumahan BTN Banua Nagaya di sini.</p>
             </div>
 
             <!-- List Item Accordion FAQ -->
-            <div class="space-y-3">
+            <div class="space-y-3.5">
                 <!-- FAQ Item 1 -->
                 <div class="bg-faqCard rounded-2xl border border-gray-700/60 overflow-hidden">
-                    <button class="faq-btn w-full p-4 text-left flex items-center justify-between gap-3 focus:outline-none">
-                        <div class="flex items-start gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 mt-2 shrink-0"></span>
+                    <button class="faq-btn w-full p-4.5 text-left flex items-center justify-between gap-3 focus:outline-none">
+                        <div class="flex items-start gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 mt-1.5 shrink-0"></span>
                             <span class="font-bold text-xs sm:text-sm text-gray-100">Apakah perumahannya siap huni atau harus inden dulu?</span>
                         </div>
-                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-xs">
+                        <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-xs">
                             <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300"></i>
                         </div>
                     </button>
-                    <div class="faq-answer px-4 text-xs text-gray-300 bg-black/20 border-t border-gray-800/80">
+                    <div class="faq-answer px-4.5 text-xs sm:text-sm text-gray-300 bg-black/20 border-t border-gray-800/80">
                         Kami menyediakan unit ready stock (siap huni) serta unit pengembangan inden dengan estimasi pembangunan tepat waktu.
                     </div>
                 </div>
 
                 <!-- FAQ Item 2 -->
                 <div class="bg-faqCard rounded-2xl border border-gray-700/60 overflow-hidden">
-                    <button class="faq-btn w-full p-4 text-left flex items-center justify-between gap-3 focus:outline-none">
-                        <div class="flex items-start gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 mt-2 shrink-0"></span>
+                    <button class="faq-btn w-full p-4.5 text-left flex items-center justify-between gap-3 focus:outline-none">
+                        <div class="flex items-start gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 mt-1.5 shrink-0"></span>
                             <span class="font-bold text-xs sm:text-sm text-gray-100">Di mana lokasi tepatnya dan bagaimana akses jalan?</span>
                         </div>
-                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-xs">
+                        <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-xs">
                             <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300"></i>
                         </div>
                     </button>
-                    <div class="faq-answer px-4 text-xs text-gray-300 bg-black/20 border-t border-gray-800/80">
+                    <div class="faq-answer px-4.5 text-xs sm:text-sm text-gray-300 bg-black/20 border-t border-gray-800/80">
                         Lokasi berada strategis di Kelurahan Panau, Kecamatan Palu Utara. Akses jalan perumahan luas, diaspal/paving, serta bebas dari potensi banjir.
                     </div>
                 </div>
 
                 <!-- FAQ Item 3 -->
                 <div class="bg-faqCard rounded-2xl border border-gray-700/60 overflow-hidden">
-                    <button class="faq-btn w-full p-4 text-left flex items-center justify-between gap-3 focus:outline-none">
-                        <div class="flex items-start gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 mt-2 shrink-0"></span>
+                    <button class="faq-btn w-full p-4.5 text-left flex items-center justify-between gap-3 focus:outline-none">
+                        <div class="flex items-start gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 mt-1.5 shrink-0"></span>
                             <span class="font-bold text-xs sm:text-sm text-gray-100">Berapa modal awal yang harus saya siapkan untuk bisa akad?</span>
                         </div>
-                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-xs">
+                        <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-xs">
                             <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300"></i>
                         </div>
                     </button>
-                    <div class="faq-answer px-4 text-xs text-gray-300 bg-black/20 border-t border-gray-800/80">
+                    <div class="faq-answer px-4.5 text-xs sm:text-sm text-gray-300 bg-black/20 border-t border-gray-800/80">
                         Modal awal sangat terjangkau dengan promo DP ringan, bahkan bisa dicicil/dapatkan keringanan biaya administrasi & KPR sesuai program promo berjalan.
                     </div>
                 </div>
 
                 <!-- FAQ Item 4 -->
                 <div class="bg-faqCard rounded-2xl border border-gray-700/60 overflow-hidden">
-                    <button class="faq-btn w-full p-4 text-left flex items-center justify-between gap-3 focus:outline-none">
-                        <div class="flex items-start gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 mt-2 shrink-0"></span>
+                    <button class="faq-btn w-full p-4.5 text-left flex items-center justify-between gap-3 focus:outline-none">
+                        <div class="flex items-start gap-3">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 mt-1.5 shrink-0"></span>
                             <span class="font-bold text-xs sm:text-sm text-gray-100">Status pekerjaan saya Kontrak / Freelance / Wiraswasta, apakah bisa KPR?</span>
                         </div>
-                        <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-xs">
+                        <div class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-xs">
                             <i class="fa-solid fa-chevron-down faq-icon transition-transform duration-300"></i>
                         </div>
                     </button>
-                    <div class="faq-answer px-4 text-xs text-gray-300 bg-black/20 border-t border-gray-800/80">
+                    <div class="faq-answer px-4.5 text-xs sm:text-sm text-gray-300 bg-black/20 border-t border-gray-800/80">
                         Bisa! Tim marketing kami akan memberikan pendampingan penuh mengenai kelengkapan dokumen pendukung agar pengajuan KPR Anda disetujui pihak bank.
                     </div>
                 </div>
@@ -314,23 +327,23 @@
         </section>
 
         <!-- FORMULIR PEMESANAN / INFORMASI -->
-        <section id="form-section" class="p-4 bg-white border-b border-gray-200">
-            <div class="bg-gradient-to-br from-blue-50 to-orange-50 p-4 rounded-2xl border border-blue-100">
-                <h3 class="font-extrabold text-gray-800 text-sm mb-1 text-center">Formulir Tanya Jawab / Cek Lokasi</h3>
+        <section id="form-section" class="p-5 bg-white border-b border-gray-200">
+            <div class="bg-gradient-to-br from-blue-50 to-orange-50 p-5 rounded-2xl border border-blue-100">
+                <h3 class="font-extrabold text-gray-800 text-base mb-1 text-center">Formulir Tanya Jawab / Cek Lokasi</h3>
                 <p class="text-xs text-gray-500 mb-4 text-center">Isi nama & nomor WhatsApp Anda untuk terhubung langsung dengan tim Pemasaran</p>
                 
-                <form id="waLeadForm" class="space-y-3">
+                <form id="waLeadForm" class="space-y-3.5">
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-1">Nama Lengkap</label>
-                        <input type="text" id="leadName" required placeholder="Contoh: Syamsuddin" class="w-full text-xs px-3 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brandBlue bg-white">
+                        <input type="text" id="leadName" required placeholder="Contoh: Syamsuddin" class="w-full text-xs sm:text-sm px-3.5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brandBlue bg-white">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-1">Nomor WhatsApp</label>
-                        <input type="tel" id="leadPhone" required placeholder="Contoh: 085123456789" class="w-full text-xs px-3 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brandBlue bg-white">
+                        <input type="tel" id="leadPhone" required placeholder="Contoh: 08123456789" class="w-full text-xs sm:text-sm px-3.5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brandBlue bg-white">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-700 mb-1">Pekerjaan</label>
-                        <select id="leadJob" class="w-full text-xs px-3 py-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brandBlue bg-white">
+                        <select id="leadJob" class="w-full text-xs sm:text-sm px-3.5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brandBlue bg-white">
                             <option value="PNS/ASN">PNS / ASN</option>
                             <option value="Karyawan Swasta">Karyawan Swasta</option>
                             <option value="Wiraswasta/Usaha">Wiraswasta / Usaha</option>
@@ -338,25 +351,25 @@
                             <option value="Lainnya">Lainnya</option>
                         </select>
                     </div>
-                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-3 rounded-xl transition shadow-md flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-lg"></i> KIRIM SEKARANG KE WHATSAPP
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm py-3.5 rounded-xl transition shadow-md flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> KIRIM SEKARANG KE WHATSAPP
                     </button>
                 </form>
             </div>
         </section>
 
         <!-- FOOTER -->
-        <footer class="p-4 bg-gray-900 text-gray-400 text-center text-[10px]">
+        <footer class="p-5 bg-gray-900 text-gray-400 text-center text-xs">
             <p>© 2026 BTN Banua Nagaya - Panau, Palu Utara.</p>
-            <p class="mt-0.5">Semua Hak Cipta Dilindungi Undang-Undang.</p>
+            <p class="mt-1 text-[11px]">Semua Hak Cipta Dilindungi Undang-Undang.</p>
         </footer>
 
         <!-- STICKY BOTTOM WA CTA BUTTON -->
-        <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] bg-white border-t border-gray-200 p-2.5 z-50 flex items-center justify-center shadow-lg">
-            <a href="https://wa.me/6285150531572?text=Halo%20Admin%20BTN%20Banua%20Nagaya,%20saya%20tertarik%20dengan%20perumahan%20di%20Panau%20Palu%20Utara." 
+        <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] bg-white border-t border-gray-200 p-3 z-50 flex items-center justify-center shadow-lg">
+            <a href="https://wa.me/6281234567890?text=Halo%20Admin%20BTN%20Banua%20Nagaya,%20saya%20tertarik%20dengan%20perumahan%20di%20Panau%20Palu%20Utara." 
                target="_blank" 
-               class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold text-sm py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-md animate-pulse">
-                <i class="fa-brands fa-whatsapp text-xl"></i> HUBUNGI MARKETING (WA)
+               class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold text-sm sm:text-base py-3.5 px-4 rounded-xl flex items-center justify-center gap-2.5 shadow-md animate-pulse">
+                <i class="fa-brands fa-whatsapp text-2xl"></i> HUBUNGI MARKETING (WA)
             </a>
         </div>
 
@@ -374,7 +387,7 @@
         // Create Dots
         items.forEach((_, idx) => {
             const dot = document.createElement('button');
-            dot.className = `w-2 h-2 rounded-full transition-all ${idx === 0 ? 'bg-white w-5' : 'bg-white/50'}`;
+            dot.className = `w-2 h-2 rounded-full transition-all ${idx === 0 ? 'bg-white w-6' : 'bg-white/50'}`;
             dot.addEventListener('click', () => goToSlide(idx));
             dotsContainer.appendChild(dot);
         });
@@ -394,7 +407,7 @@
 
             dots.forEach((dot, idx) => {
                 if (idx === currentIndex) {
-                    dot.className = 'w-5 h-2 bg-white rounded-full transition-all';
+                    dot.className = 'w-6 h-2 bg-white rounded-full transition-all';
                 } else {
                     dot.className = 'w-2 h-2 bg-white/50 rounded-full transition-all';
                 }
@@ -451,7 +464,7 @@
             const job = document.getElementById('leadJob').value;
 
             const text = `Halo Admin BTN Banua Nagaya, saya ingin informasi perumahan.%0A%0A*Nama:* ${encodeURIComponent(name)}%0A*No HP:* ${encodeURIComponent(phone)}%0A*Pekerjaan:* ${encodeURIComponent(job)}`;
-            window.open(`https://wa.me/6285150531572?text=${text}`, '_blank');
+            window.open(`https://wa.me/6281234567890?text=${text}`, '_blank');
         });
     </script>
 </body>
