@@ -67,6 +67,19 @@
         .rotate-180 {
             transform: rotate(180deg);
         }
+
+        /* Styling Popup Social Proof Toast */
+        .toast-popup {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            transform: translateY(100px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .toast-popup.show {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
     </style>
 </head>
 <body class="antialiased text-gray-800 pt-3 sm:pt-6">
@@ -364,6 +377,28 @@
             <p class="mt-1 text-[11px]">Semua Hak Cipta Dilindungi Undang-Undang.</p>
         </footer>
 
+        <!-- POP-UP SALES PROOF TOAST (PERSIS GAMBAR REFERENSI) -->
+        <div id="toastPopup" class="toast-popup fixed bottom-20 left-3 sm:left-6 z-50 bg-white/95 backdrop-blur-md rounded-2xl p-2.5 pr-3 shadow-xl border border-gray-200/80 max-w-[320px] flex items-center gap-3">
+            <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791731543/foto-iklan-banua-nagaya_ok_trbzwa.png" alt="Thumbnail" class="w-12 h-12 rounded-xl object-cover shrink-0 border border-gray-100 shadow-sm">
+            <div class="flex-1 min-w-0 pr-2">
+                <div class="flex items-center gap-1.5 leading-tight">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 shrink-0 animate-pulse"></span>
+                    <p class="text-[11px] sm:text-xs text-gray-800 font-medium truncate">
+                        <strong id="toastBuyerName" class="font-extrabold text-gray-900">Pak Fajar</strong> tertarik dengan rumah ini
+                    </p>
+                </div>
+                <p class="text-[10px] sm:text-[11px] font-semibold text-gray-600 mt-0.5 truncate">
+                    BTN Banua Nagaya – Type 36 Subsidi
+                </p>
+                <p class="text-[9px] text-gray-400 font-medium">
+                    Sedang diminati
+                </p>
+            </div>
+            <button id="closeToastBtn" class="text-gray-400 hover:text-gray-600 text-xs p-1 self-start -mt-1 -mr-1">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
         <!-- STICKY BOTTOM WA CTA BUTTON -->
         <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] bg-white border-t border-gray-200 p-3 z-50 flex items-center justify-center shadow-lg">
             <a href="https://wa.me/6281234567890?text=Halo%20Admin%20BTN%20Banua%20Nagaya,%20saya%20tertarik%20dengan%20perumahan%20di%20Panau%20Palu%20Utara." 
@@ -375,7 +410,7 @@
 
     </div>
 
-    <!-- SCRIPT SLIDER, FAQ & FORM -->
+    <!-- SCRIPT SLIDER, FAQ, FORM & POPUP NOTIFIKASI -->
     <script>
         // Carousel Script
         const items = document.querySelectorAll('.carousel-item');
@@ -465,6 +500,41 @@
 
             const text = `Halo Admin BTN Banua Nagaya, saya ingin informasi perumahan.%0A%0A*Nama:* ${encodeURIComponent(name)}%0A*No HP:* ${encodeURIComponent(phone)}%0A*Pekerjaan:* ${encodeURIComponent(job)}`;
             window.open(`https://wa.me/6281234567890?text=${text}`, '_blank');
+        });
+
+        // POP-UP NOTIFIKASI SALES PROOF SCRIPT
+        const toastPopup = document.getElementById('toastPopup');
+        const toastBuyerName = document.getElementById('toastBuyerName');
+        const closeToastBtn = document.getElementById('closeToastBtn');
+
+        const buyerNames = [
+            'Pak Fajar', 'Ibu Rahma', 'Pak Hendra', 'Ibu Nur', 
+            'Pak Syamsul', 'Ibu Maya', 'Pak Rizal', 'Ibu Wahyuni'
+        ];
+        let nameIndex = 0;
+        let toastInterval;
+
+        function showToast() {
+            toastBuyerName.textContent = buyerNames[nameIndex];
+            toastPopup.classList.add('show');
+
+            // Sembunyikan otomatis setelah 4.5 detik
+            setTimeout(() => {
+                toastPopup.classList.remove('show');
+                nameIndex = (nameIndex + 1) % buyerNames.length;
+            }, 4500);
+        }
+
+        // Tampilkan pertama kali setelah 3 detik
+        setTimeout(() => {
+            showToast();
+            // Muncul secara berkala setiap 9 detik
+            toastInterval = setInterval(showToast, 9000);
+        }, 3000);
+
+        // Tombol Close manual
+        closeToastBtn.addEventListener('click', () => {
+            toastPopup.classList.remove('show');
         });
     </script>
 </body>
