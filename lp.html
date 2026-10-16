@@ -156,18 +156,31 @@
             <div class="relative overflow-hidden rounded-2xl shadow-md bg-gray-900 group">
                 <!-- Slides Container -->
                 <div id="carouselSlides" class="relative min-h-[300px] sm:min-h-[360px]">
+                    <!-- Foto Slider 1 (Baru Ditambahkan) -->
                     <div class="carousel-item absolute inset-0 opacity-100 transition-opacity duration-500">
+                        <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1792171245/Promosi_Hunian_Impian_BTN_Banua_Nagaya_rxw8xk.png" alt="Promosi Hunian Impian BTN Banua Nagaya" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Foto Slider 2 (Baru Ditambahkan) -->
+                    <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
+                        <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1792171201/Poster_Promosi_Perumahan_BTN_Banua_Nagaya_gk2yst.png" alt="Poster Promosi Perumahan BTN Banua Nagaya" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Foto Slider 3 -->
+                    <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791644916/banuagaya01_k5cacd.jpg" alt="Foto Perumahan 1" class="w-full h-full object-cover">
                     </div>
+                    <!-- Foto Slider 4 -->
                     <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791644850/banuagaya09_bzylyi.jpg" alt="Foto Perumahan 2" class="w-full h-full object-cover">
                     </div>
+                    <!-- Foto Slider 5 -->
                     <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791729964/Banua-01_jedwjd.png" alt="Foto Perumahan 3" class="w-full h-full object-cover">
                     </div>
+                    <!-- Foto Slider 6 -->
                     <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791729963/WhatsApp_Image_2026-09-24_at_16.54.59_2-50kb_ge919n.jpg" alt="Foto Perumahan 4" class="w-full h-full object-cover">
                     </div>
+                    <!-- Foto Slider 7 -->
                     <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791729962/WhatsApp_Image_2026-09-24_at_16.54.58_2-50kb_hptcho.jpg" alt="Foto Perumahan 5" class="w-full h-full object-cover">
                     </div>
@@ -451,7 +464,7 @@
         const nextBtn = document.getElementById('nextBtn');
         let currentIndex = 0;
 
-        // Create Dots
+        // Create Dots secara dinamis berdasarkan jumlah foto
         items.forEach((_, idx) => {
             const dot = document.createElement('button');
             dot.className = `w-2 h-2 rounded-full transition-all ${idx === 0 ? 'bg-white w-6' : 'bg-white/50'}`;
