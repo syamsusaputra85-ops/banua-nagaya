@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -80,58 +81,63 @@
             opacity: 1;
             pointer-events: auto;
         }
+
+        /* Styling Tombol Kontak */
+        .btn-kontak {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          padding: 14px 28px;
+          font-family: 'Poppins', 'Segoe UI', sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+          color: #ffffff;
+          background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
+          border: none;
+          border-radius: 12px;
+          text-decoration: none;
+          box-shadow: 0 8px 20px rgba(14, 165, 233, 0.35);
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .btn-kontak:hover {
+          background: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #0ea5e9 100%);
+          transform: translateY(-3px);
+          box-shadow: 0 12px 25px rgba(14, 165, 233, 0.5);
+          color: #ffffff;
+        }
+
+        .btn-kontak:active {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 15px rgba(14, 165, 233, 0.3);
+        }
+
+        .btn-kontak i, .btn-kontak svg {
+          font-size: 18px;
+        }
     </style>
-<style>
-    /* Styling Tombol Kontak */
-    .btn-kontak {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 28px;
-      font-family: 'Poppins', 'Segoe UI', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: #ffffff;
-      background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
-      border: none;
-      border-radius: 12px;
-      text-decoration: none;
-      box-shadow: 0 8px 20px rgba(14, 165, 233, 0.35);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    /* Efek Hover (Saat kursor diarahkan) */
-    .btn-kontak:hover {
-      background: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #0ea5e9 100%);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(14, 165, 233, 0.5);
-      color: #ffffff;
-    }
-
-    /* Efek Click/Active */
-    .btn-kontak:active {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 15px rgba(14, 165, 233, 0.3);
-    }
-
-    /* Ukuran ikon */
-    .btn-kontak i, .btn-kontak svg {
-      font-size: 18px;
-    }
-  </style>
 </head>
 <body class="antialiased text-gray-800 pt-3 sm:pt-6">
 
     <div class="app-container">
         
-        <!-- TOP PROMO BAR (HEADER ATAS) -->
-        <div class="bg-topBarBlue text-white py-2.5 px-4 text-center flex items-center justify-center gap-2 text-xs sm:text-sm font-bold shadow-inner">
-            <span class="bg-[#a3683a] text-white text-[10px] sm:text-xs px-2.5 py-0.5 rounded font-extrabold tracking-wide uppercase">
-                PROMO SPESIAL
-            </span>
-            <span>Subsidi DP 0% &amp; Free Biaya Akad!</span>
+        <!-- TOP BAR DENGAN WAKTU REAL-TIME & PROMO -->
+        <div class="bg-topBarBlue text-white py-2 px-4 text-center flex flex-col sm:flex-row items-center justify-between gap-1 text-xs font-semibold shadow-inner border-b border-blue-400/30">
+            <!-- TANGGAL & WAKTU REAL TIME -->
+            <div class="flex items-center gap-1.5 text-cyan-200">
+                <i class="fa-regular fa-clock text-cyan-300"></i>
+                <span id="realtime-clock" class="font-medium tracking-wide">Memuat waktu...</span>
+            </div>
+            
+            <!-- PROMO -->
+            <div class="flex items-center gap-2">
+                <span class="bg-[#a3683a] text-white text-[10px] px-2 py-0.5 rounded font-extrabold tracking-wide uppercase">
+                    PROMO SPESIAL
+                </span>
+                <span>Subsidi DP 0% &amp; Free Biaya Akad!</span>
+            </div>
         </div>
 
         <!-- LOGO SECTION (CENTERED) -->
@@ -150,10 +156,8 @@
 
         <!-- HERO HEADER FOTO TERANG -->
         <section class="relative w-full h-[280px] sm:h-[340px] bg-cover bg-center flex items-end p-5 brightness-105" style="background-image: url('https://res.cloudinary.com/di8stbg60/image/upload/v1792233781/BTN_Banua_Nagaya_Post_Facebook_1200x675_hjvr5e.jpg');">
-            <!-- Overlay Sangat Tipis HANYA di bagian bawah agar foto tetap terang -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
-            <!-- Konten di atas Gambar -->
             <div class="relative z-10 text-white">
                 <span class="bg-brandOrange text-white text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider mb-2 inline-block shadow-md">
                     Hunian Impian Keluarga
@@ -194,39 +198,30 @@
             </div>
 
             <div class="relative overflow-hidden rounded-2xl shadow-md bg-gray-900 group">
-                <!-- Slides Container -->
                 <div id="carouselSlides" class="relative min-h-[300px] sm:min-h-[360px]">
-                    <!-- Foto Slider 1 (Baru Ditambahkan) -->
                     <div class="carousel-item absolute inset-0 opacity-100 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1792171245/Promosi_Hunian_Impian_BTN_Banua_Nagaya_rxw8xk.png" alt="Promosi Hunian Impian BTN Banua Nagaya" class="w-full h-full object-cover">
                     </div>
-                    <!-- Foto Slider 2 (Baru Ditambahkan) -->
                     <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1792171201/Poster_Promosi_Perumahan_BTN_Banua_Nagaya_gk2yst.png" alt="Poster Promosi Perumahan BTN Banua Nagaya" class="w-full h-full object-cover">
                     </div>
-                    <!-- Foto Slider 3 -->
                     <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791644916/banuagaya01_k5cacd.jpg" alt="Foto Perumahan 1" class="w-full h-full object-cover">
                     </div>
-                    <!-- Foto Slider 4 -->
                     <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791644850/banuagaya09_bzylyi.jpg" alt="Foto Perumahan 2" class="w-full h-full object-cover">
                     </div>
-                    <!-- Foto Slider 5 -->
                     <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791729964/Banua-01_jedwjd.png" alt="Foto Perumahan 3" class="w-full h-full object-cover">
                     </div>
-                    <!-- Foto Slider 6 -->
                     <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791729963/WhatsApp_Image_2026-09-24_at_16.54.59_2-50kb_ge919n.jpg" alt="Foto Perumahan 4" class="w-full h-full object-cover">
                     </div>
-                    <!-- Foto Slider 7 -->
                     <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
                         <img src="https://res.cloudinary.com/di8stbg60/image/upload/v1791729962/WhatsApp_Image_2026-09-24_at_16.54.58_2-50kb_hptcho.jpg" alt="Foto Perumahan 5" class="w-full h-full object-cover">
                     </div>
                 </div>
 
-                <!-- Navigation Buttons -->
                 <button id="prevBtn" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white w-9 h-9 rounded-full flex items-center justify-center transition">
                     <i class="fa-solid fa-chevron-left text-base"></i>
                 </button>
@@ -234,7 +229,6 @@
                     <i class="fa-solid fa-chevron-right text-base"></i>
                 </button>
 
-                <!-- Indicator Dots -->
                 <div id="dotsContainer" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-10"></div>
             </div>
         </section>
@@ -307,7 +301,6 @@
                 <p class="text-xs text-gray-500 mt-0.5">Panau, Kec. Palu Utara, Kota Palu, Sulawesi Tengah</p>
             </div>
 
-            <!-- Embed Google Maps -->
             <div class="relative w-full rounded-2xl overflow-hidden shadow-md border border-gray-200 h-[320px]">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.478657830417!2d119.8590344737244!3d-0.7476321352720232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d8bc184b2e35af5%3A0x57775b7275046a10!2sBTN.Banua%20Nagaya!5e0!3m2!1sid!2sid!4v1791731026219!5m2!1sid!2sid" 
@@ -356,9 +349,7 @@
                 <p class="text-xs sm:text-sm text-gray-400 mt-2">Temukan informasi lengkap seputar perumahan BTN Banua Nagaya di sini.</p>
             </div>
 
-            <!-- List Item Accordion FAQ -->
             <div class="space-y-3.5">
-                <!-- FAQ Item 1 -->
                 <div class="bg-faqCard rounded-2xl border border-gray-700/60 overflow-hidden">
                     <button class="faq-btn w-full p-4.5 text-left flex items-center justify-between gap-3 focus:outline-none">
                         <div class="flex items-start gap-3">
@@ -374,7 +365,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 2 -->
                 <div class="bg-faqCard rounded-2xl border border-gray-700/60 overflow-hidden">
                     <button class="faq-btn w-full p-4.5 text-left flex items-center justify-between gap-3 focus:outline-none">
                         <div class="flex items-start gap-3">
@@ -390,7 +380,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 3 -->
                 <div class="bg-faqCard rounded-2xl border border-gray-700/60 overflow-hidden">
                     <button class="faq-btn w-full p-4.5 text-left flex items-center justify-between gap-3 focus:outline-none">
                         <div class="flex items-start gap-3">
@@ -406,7 +395,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 4 -->
                 <div class="bg-faqCard rounded-2xl border border-gray-700/60 overflow-hidden">
                     <button class="faq-btn w-full p-4.5 text-left flex items-center justify-between gap-3 focus:outline-none">
                         <div class="flex items-start gap-3">
@@ -455,16 +443,19 @@
                 </form>
             </div>
         </section>
-        <hr>
-         <section>
 
-        <!-- Tombol Kontak Banua Nagaya -->
-  <center><a href="https://www.banuagaya.site/kontak" class="btn-kontak" target="_blank" rel="noopener noreferrer">
-    <i class="fa-solid fa-envelope"></i>
-    <span>Hubungi Kontak Kami</span>
-  </a> </center>
-<hr>
- </section>
+        <hr>
+        <section class="py-4">
+            <!-- Tombol Kontak Banua Nagaya -->
+            <center>
+                <a href="https://www.banuagaya.site/kontak" class="btn-kontak" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Hubungi Kontak Kami</span>
+                </a>
+            </center>
+            <hr class="mt-4">
+        </section>
+
         <!-- FOOTER -->
         <footer class="p-5 bg-gray-900 text-gray-400 text-center text-xs">
             <p>© 2026 BTN Banua Nagaya - Panau, Palu Utara.</p>
@@ -504,8 +495,37 @@
 
     </div>
 
-    <!-- SCRIPT SLIDER, FAQ, FORM & POPUP NOTIFIKASI -->
+    <!-- SCRIPT REAL-TIME CLOCK, SLIDER, FAQ & FORM -->
     <script>
+        // Script Waktu Real-Time (WITA)
+        function updateRealtimeClock() {
+            const now = new Date();
+            
+            // Nama hari & bulan Bahasa Indonesia
+            const hariList = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const bulanList = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+            const namaHari = hariList[now.getDay()];
+            const tgl = now.getDate();
+            const namaBulan = bulanList[now.getMonth()];
+            const tahun = now.getFullYear();
+
+            const jam = String(now.getHours()).padStart(2, '0');
+            const menit = String(now.getMinutes()).padStart(2, '0');
+            const detik = String(now.getSeconds()).padStart(2, '0');
+
+            const formattedString = `${namaHari}, ${tgl} ${namaBulan} ${tahun} - ${jam}.${menit}.${detik} WITA`;
+            
+            const clockEl = document.getElementById('realtime-clock');
+            if (clockEl) {
+                clockEl.textContent = formattedString;
+            }
+        }
+
+        // Jalankan fungsi jam real-time setiap detik
+        setInterval(updateRealtimeClock, 1000);
+        updateRealtimeClock(); // Jalankan langsung saat pertama di-load
+
         // Carousel Script
         const items = document.querySelectorAll('.carousel-item');
         const dotsContainer = document.getElementById('dotsContainer');
@@ -513,7 +533,6 @@
         const nextBtn = document.getElementById('nextBtn');
         let currentIndex = 0;
 
-        // Create Dots secara dinamis berdasarkan jumlah foto
         items.forEach((_, idx) => {
             const dot = document.createElement('button');
             dot.className = `w-2 h-2 rounded-full transition-all ${idx === 0 ? 'bg-white w-6' : 'bg-white/50'}`;
@@ -558,10 +577,11 @@
             updateSlide();
         }
 
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
+        if(nextBtn && prevBtn) {
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+        }
 
-        // Auto Slide every 4 seconds
         setInterval(nextSlide, 4000);
 
         // Accordion FAQ Script
@@ -570,66 +590,26 @@
             btn.addEventListener('click', () => {
                 const answer = btn.nextElementSibling;
                 const icon = btn.querySelector('.faq-icon');
-
-                // Toggle logic
-                const isOpen = answer.classList.contains('open');
                 
-                // Close all
-                document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.remove('open'));
-                document.querySelectorAll('.faq-icon').forEach(ic => ic.classList.remove('rotate-180'));
-
-                if (!isOpen) {
-                    answer.classList.add('open');
-                    icon.classList.add('rotate-180');
-                }
+                answer.classList.toggle('open');
+                icon.classList.toggle('rotate-180');
             });
         });
 
-        // WhatsApp Form Submit Script
-        document.getElementById('waLeadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('leadName').value;
-            const phone = document.getElementById('leadPhone').value;
-            const job = document.getElementById('leadJob').value;
+        // Form Lead WA Script
+        const waLeadForm = document.getElementById('waLeadForm');
+        if (waLeadForm) {
+            waLeadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('leadName').value;
+                const phone = document.getElementById('leadPhone').value;
+                const job = document.getElementById('leadJob').value;
 
-            const text = `Halo Admin BTN Banua Nagaya, saya ingin informasi perumahan.%0A%0A*Nama:* ${encodeURIComponent(name)}%0A*No HP:* ${encodeURIComponent(phone)}%0A*Pekerjaan:* ${encodeURIComponent(job)}`;
-            window.open(`https://wa.me/6285150531572?text=${text}`, '_blank');
-        });
-
-        // POP-UP NOTIFIKASI SALES PROOF SCRIPT
-        const toastPopup = document.getElementById('toastPopup');
-        const toastBuyerName = document.getElementById('toastBuyerName');
-        const closeToastBtn = document.getElementById('closeToastBtn');
-
-        const buyerNames = [
-            'Pak Fajar', 'Ibu Rahma', 'Pak Hendra', 'Ibu Nur', 
-            'Pak Syamsul', 'Ibu Maya', 'Pak Rizal', 'Ibu Wahyuni'
-        ];
-        let nameIndex = 0;
-        let toastInterval;
-
-        function showToast() {
-            toastBuyerName.textContent = buyerNames[nameIndex];
-            toastPopup.classList.add('show');
-
-            // Sembunyikan otomatis setelah 4.5 detik
-            setTimeout(() => {
-                toastPopup.classList.remove('show');
-                nameIndex = (nameIndex + 1) % buyerNames.length;
-            }, 4500);
+                const text = `Halo Admin BTN Banua Nagaya,%0ASaya ingin bertanya / cek lokasi perumahan.%0A%0A*Nama:* ${encodeURIComponent(name)}%0A*No WA:* ${encodeURIComponent(phone)}%0A*Pekerjaan:* ${encodeURIComponent(job)}`;
+                
+                window.open(`https://wa.me/6285150531572?text=${text}`, '_blank');
+            });
         }
-
-        // Tampilkan pertama kali setelah 3 detik
-        setTimeout(() => {
-            showToast();
-            // Muncul secara berkala setiap 9 detik
-            toastInterval = setInterval(showToast, 9000);
-        }, 3000);
-
-        // Tombol Close manual
-        closeToastBtn.addEventListener('click', () => {
-            toastPopup.classList.remove('show');
-        });
     </script>
 </body>
 </html>
