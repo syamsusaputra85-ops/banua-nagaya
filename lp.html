@@ -81,6 +81,46 @@
             pointer-events: auto;
         }
     </style>
+<style>
+    /* Styling Tombol Kontak */
+    .btn-kontak {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
+      border: none;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(14, 165, 233, 0.35);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    /* Efek Hover (Saat kursor diarahkan) */
+    .btn-kontak:hover {
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #0ea5e9 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(14, 165, 233, 0.5);
+      color: #ffffff;
+    }
+
+    /* Efek Click/Active */
+    .btn-kontak:active {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 15px rgba(14, 165, 233, 0.3);
+    }
+
+    /* Ukuran ikon */
+    .btn-kontak i, .btn-kontak svg {
+      font-size: 18px;
+    }
+  </style>
 </head>
 <body class="antialiased text-gray-800 pt-3 sm:pt-6">
 
@@ -415,6 +455,12 @@
                 </form>
             </div>
         </section>
+
+        <!-- Tombol Kontak Banua Nagaya -->
+  <a href="https://www.banuagaya.site/kontak" class="btn-kontak" target="_blank" rel="noopener noreferrer">
+    <i class="fa-solid fa-envelope"></i>
+    <span>Hubungi Kontak Kami</span>
+  </a>
 
         <!-- FOOTER -->
         <footer class="p-5 bg-gray-900 text-gray-400 text-center text-xs">
