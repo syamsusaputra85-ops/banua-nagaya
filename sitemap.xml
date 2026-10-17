@@ -4,27 +4,32 @@
 
   <url>
        <loc>https://www.banuagaya.site/</loc>
-       <lastmod>2026-10-10T07:11:10+00:00</lastmod>
+       <lastmod>2026-10-17T12:59:14+00:00</lastmod>
        <priority>1.0000</priority>
   </url>
   <url>
-       <loc>https://www.banuagaya.site/dp</loc>
-       <lastmod>2026-10-10T07:11:10+00:00</lastmod>
-       <priority>0.8000</priority>
-  </url>
-    <url>
-       <loc>https://www.banuagaya.site/tapera</loc>
-       <lastmod>2026-10-10T07:11:10+00:00</lastmod>
+       <loc>https://www.banuagaya.site/banuagaya</loc>
+       <lastmod>2026-10-17T12:59:14+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
   <url>
-       <loc>https://www.banuagaya.site/sitemap.xml</loc>
-       <lastmod>2026-10-10T07:11:10+00:00</lastmod>
+       <loc>https://www.banuagaya.site/dp</loc>
+       <lastmod>2026-10-17T12:59:14+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
     <url>
-       <loc>https://www.banuagaya.site/form</loc>
-       <lastmod>2026-10-10T07:11:10+00:00</lastmod>
+       <loc>https://www.banuagaya.site/lp</loc>
+       <lastmod>2026-10-17T12:59:14+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+    <url>
+       <loc>https://www.banuagaya.site/kontak</loc>
+       <lastmod>2026-10-17T12:59:14+00:00</lastmod>
+       <priority>0.8000</priority>
+  </url>
+    <url>
+       <loc>https://www.banuagaya.site/logo-kbn.png</loc>
+       <lastmod>2026-10-17T12:59:14+00:00</lastmod>
        <priority>0.8000</priority>
   </url>
 </urlset>
