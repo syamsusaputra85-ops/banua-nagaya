@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surat Penawaran Bahan Bangunan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @page {
+      size: A4;
+      margin: 12mm 15mm 12mm 15mm;
+    }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f3f4f6;
+      color: #000;
+      font-size: 11pt;
+      line-height: 1.3;
+    }
+    
+    .page-container {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 15mm 15mm;
+      margin: 20px auto;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      box-sizing: border-box;
+    }
+
+    /* Editable Styling Highlights */
+    [contenteditable="true"]:hover {
+      outline: 1px dashed #60a5fa;
+      background-color: #eff6ff;
+      border-radius: 2px;
+    }
+    [contenteditable="true"]:focus {
+      outline: 2px solid #2563eb;
+      background-color: #ffffff;
+      border-radius: 2px;
+    }
+
+    /* Table borders and colors */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    table, th, td {
+      border: 1px solid #000000;
+    }
+
+    .bg-header-green {
+      background-color: #d1e7dd !important; /* Hijau muda */
+    }
+    .bg-header-yellow {
+      background-color: #fff3cd !important; /* Kuning muda */
+    }
+    .bg-gray-row {
+      background-color: #e2e8f0 !important; /* Abu-abu terang */
+    }
+
+    /* Print styles */
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+      body {
+        background-color: white;
+      }
+      .page-container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      [contenteditable="true"]:hover, [contenteditable="true"]:focus {
+        outline: none !important;
+        background-color: transparent !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Control Bar -->
+  <div class="no-print fixed top-4 right-4 z-50 bg-white/90 backdrop-blur-md p-3 rounded-xl shadow-2xl border border-gray-200 flex flex-col gap-2 max-w-xs">
+    <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Kontrol Dokumen</div>
+    <button onclick="addRow()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2 px-3 rounded-lg shadow transition flex items-center justify-center gap-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+      Tambah Baris Barang
+    </button>
+    <button onclick="calculateTotals()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2 px-3 rounded-lg shadow transition flex items-center justify-center gap-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+      Hitung Ulang Total
+    </button>
+    <button onclick="window.print()" class="bg-gray-800 hover:bg-black text-white text-xs font-semibold py-2 px-3 rounded-lg shadow transition flex items-center justify-center gap-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+      Cetak / Simpan PDF
+    </button>
+    <div class="text-[10px] text-gray-500 mt-1 italic leading-tight">
+      * Klik pada bagian teks/tabel mana saja untuk langsung mengedit nilainya.
+    </div>
+  </div>
+
+  <!-- A4 Page Container -->
+  <div class="page-container">
+    
+    <!-- Title Header -->
+    <div class="bg-gray-300 border border-black text-center py-1 font-bold text-base tracking-wide mb-4 uppercase" contenteditable="true">
+      SURAT PENAWARAN BAHAN BANGUNAN
+    </div>
+
+    <!-- Letter Head Details -->
+    <div class="mb-3 space-y-0.5 text-sm">
+      <p contenteditable="true" class="font-normal">Kepada Yth.</p>
+      <div class="pl-4">
+        <p contenteditable="true" class="font-bold">Tim Pemilihan KPB FLAMBOYAN</p>
+        <div class="grid grid-cols-[110px_10px_1fr] items-baseline">
+          <span contenteditable="true">Desa/Kelurahan</span>
+          <span>:</span>
+          <span contenteditable="true" class="font-medium">KEL. PANTOLOAN DAN KEL. PANTOLOAN BOYA</span>
+        </div>
+        <div class="grid grid-cols-[110px_10px_1fr] items-baseline">
+          <span contenteditable="true">Kecamatan</span>
+          <span>:</span>
+          <span contenteditable="true" class="font-medium">KECAMATAN TAWAELI</span>
+        </div>
+        <div class="grid grid-cols-[110px_10px_1fr] items-baseline">
+          <span contenteditable="true">Kab/Kota</span>
+          <span>:</span>
+          <span contenteditable="true" class="font-medium">PALU</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intro Text -->
+    <p contenteditable="true" class="text-justify text-sm mb-3">
+      Setelah mempelajari dan mencermati undangan Pemilihan Terbuka Toko termasuk penjelasan dan persyaratan umum, kami bermaksud mengikuti dan mengajukan penawaran seperti yang tercantum dalam tabel berikut :
+    </p>
+
+    <!-- Section A Title -->
+    <h3 contenteditable="true" class="font-bold text-sm mb-1.5">A. Harga Satuan Bahan Bangunan</h3>
+
+    <!-- Main Table -->
+    <table id="itemTable" class="text-xs mb-2">
+      <thead>
+        <tr>
+          <th rowspan="2" class="bg-header-green w-[35px] text-center p-1">No</th>
+          <th rowspan="2" class="bg-header-green text-center p-1">BAHAN BANGUNAN</th>
+          <th rowspan="2" class="bg-header-green w-[65px] text-center p-1">VOLUME</th>
+          <th rowspan="2" class="bg-header-green w-[60px] text-center p-1">SATUAN</th>
+          <th colspan="2" class="bg-header-yellow text-center p-1">HARGA PENAWARAN</th>
+          <th rowspan="2" class="no-print w-[30px] border-none bg-transparent"></th>
+        </tr>
+        <tr>
+          <th class="bg-header-yellow w-[100px] text-center p-1">HARGA SATUAN</th>
+          <th class="bg-header-yellow w-[120px] text-center p-1">TOTAL HARGA</th>
+        </tr>
+        <tr class="bg-gray-row text-center font-semibold">
+          <td class="p-0.5">1</td>
+          <td class="p-0.5">2</td>
+          <td class="p-0.5">3</td>
+          <td class="p-0.5">4</td>
+          <td class="p-0.5">5</td>
+          <td class="p-0.5">6 = 3 x 5</td>
+          <td class="no-print border-none"></td>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <!-- Row 1 -->
+        <tr>
+          <td class="text-center p-1 row-no">1</td>
+          <td class="p-1" contenteditable="true">Besi Φ 8 mm (SNI : Toleransi 0,3 mm)</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">287</td>
+          <td class="text-center p-1" contenteditable="true">Btg</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">56,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">16,072,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 2 -->
+        <tr>
+          <td class="text-center p-1 row-no">2</td>
+          <td class="p-1" contenteditable="true">Besi Φ 10 mm (SNI : Toleransi 0,3 mm)</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">231</td>
+          <td class="text-center p-1" contenteditable="true">Btg</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">85,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">19,635,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 3 -->
+        <tr>
+          <td class="text-center p-1 row-no">3</td>
+          <td class="p-1" contenteditable="true">Semen Portland @ 50 Kg (Tonasa)</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">232</td>
+          <td class="text-center p-1" contenteditable="true">Zak</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">73,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">16,936,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 4 -->
+        <tr>
+          <td class="text-center p-1 row-no">4</td>
+          <td class="p-1" contenteditable="true">Pasir Beton</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">65</td>
+          <td class="text-center p-1" contenteditable="true">M3</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">124,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">8,060,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 5 -->
+        <tr>
+          <td class="text-center p-1 row-no">5</td>
+          <td class="p-1" contenteditable="true">Pasir Pasang</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">18</td>
+          <td class="text-center p-1" contenteditable="true">M3</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">124,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">2,232,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 6 -->
+        <tr>
+          <td class="text-center p-1 row-no">6</td>
+          <td class="p-1" contenteditable="true">Batako, Uk. Lokal : 11 x 9 x 29</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">11,070</td>
+          <td class="text-center p-1" contenteditable="true">Bh</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">2,200</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">24,354,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 7 -->
+        <tr>
+          <td class="text-center p-1 row-no">7</td>
+          <td class="p-1" contenteditable="true">Roster Beton (ventilasi angin)</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">48</td>
+          <td class="text-center p-1" contenteditable="true">Bh</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">30,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">1,440,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 8 -->
+        <tr>
+          <td class="text-center p-1 row-no">8</td>
+          <td class="p-1" contenteditable="true">Kusen Pintu Uk. 200 cm x 80 cm</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">16</td>
+          <td class="text-center p-1" contenteditable="true">Unit</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">350,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">5,600,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 9 -->
+        <tr>
+          <td class="text-center p-1 row-no">9</td>
+          <td class="p-1" contenteditable="true">Kusen Jendela Uk. 120 cm x 40 cm</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">32</td>
+          <td class="text-center p-1" contenteditable="true">Unit</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">350,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">11,200,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 10 -->
+        <tr>
+          <td class="text-center p-1 row-no">10</td>
+          <td class="p-1" contenteditable="true">Kayu Kls II Uk. 6/12 x 4 Meter</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">114</td>
+          <td class="text-center p-1" contenteditable="true">Btg</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">94,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">10,716,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 11 -->
+        <tr>
+          <td class="text-center p-1 row-no">11</td>
+          <td class="p-1" contenteditable="true">Kayu Kls II Uk. 5/10 x 4 Meter</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">82</td>
+          <td class="text-center p-1" contenteditable="true">Btg</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">67,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">5,494,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 12 -->
+        <tr>
+          <td class="text-center p-1 row-no">12</td>
+          <td class="p-1" contenteditable="true">Seng Gelombang BJLS 0.20 (Fumira)</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">158</td>
+          <td class="text-center p-1" contenteditable="true">Lbr</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">73,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">11,534,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 13 -->
+        <tr>
+          <td class="text-center p-1 row-no">13</td>
+          <td class="p-1" contenteditable="true">Seng Plat Bubungan = L 30 cm</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">55</td>
+          <td class="text-center p-1" contenteditable="true">M1</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">15,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">825,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 14 -->
+        <tr>
+          <td class="text-center p-1 row-no">14</td>
+          <td class="p-1" contenteditable="true">Bumbungan Soka</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">8</td>
+          <td class="text-center p-1" contenteditable="true">Btg</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">25,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">200,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 15 -->
+        <tr>
+          <td class="text-center p-1 row-no">15</td>
+          <td class="p-1" contenteditable="true">Seng Gelombang Warna 0,25</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">50</td>
+          <td class="text-center p-1" contenteditable="true">Btg</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">65,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">3,250,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 16 -->
+        <tr>
+          <td class="text-center p-1 row-no">16</td>
+          <td class="p-1" contenteditable="true">Paku Biasa 1/2" - 10"</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">38</td>
+          <td class="text-center p-1" contenteditable="true">Kg</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">25,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">950,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 17 -->
+        <tr>
+          <td class="text-center p-1 row-no">17</td>
+          <td class="p-1" contenteditable="true">Paku Seng</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">15</td>
+          <td class="text-center p-1" contenteditable="true">Kg</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">40,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">600,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+        <!-- Row 18 -->
+        <tr>
+          <td class="text-center p-1 row-no">18</td>
+          <td class="p-1" contenteditable="true">Kawat Ikat Besi Beton / Bendrat</td>
+          <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">18</td>
+          <td class="text-center p-1" contenteditable="true">Kg</td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">25,000</span></div></td>
+          <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">450,000</span></div></td>
+          <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="bg-gray-row font-bold text-sm">
+          <td colspan="4" class="text-center p-1.5 uppercase" contenteditable="true">TOTAL HARGA PENAWARAN</td>
+          <td colspan="2" class="p-1.5">
+            <div class="flex justify-between text-base">
+              <span>Rp</span>
+              <span id="grandTotal">139,548,000</span>
+            </div>
+          </td>
+          <td class="no-print border-none"></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- Notes & Terbilang -->
+    <div class="mb-2 text-xs">
+      <p contenteditable="true">Catatan : Bahan Pabrikasi disertai Merek dan Spesifikasi yang jelas</p>
+    </div>
+
+    <!-- Terbilang Box -->
+    <div class="border-2 border-black p-2 mb-4 font-bold text-sm bg-white">
+      <span contenteditable="true">Terbilang : </span>
+      <span id="terbilangText" contenteditable="true">Seratus tiga puluh sembilan juta lima ratus empat puluh delapan ribu rupiah</span>
+    </div>
+
+  </div>
+
+  <script>
+    // Format number to IDR thousand separator
+    function formatNumber(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    // Parse string number with commas to raw number
+    function parseNumber(str) {
+      if(!str) return 0;
+      var clean = str.replace(/[^0-9.-]+/g, "");
+      return parseFloat(clean) || 0;
+    }
+
+    // Update row total when Volume or Price changes
+    function updateRowTotal(element) {
+      var row = element.closest('tr');
+      var vol = parseNumber(row.querySelector('.vol-val').innerText);
+      var price = parseNumber(row.querySelector('.price-val').innerText);
+      
+      var total = Math.round(vol * price);
+      row.querySelector('.total-val').innerText = formatNumber(total);
+
+      calculateTotals();
+    }
+
+    // Calculate Grand Total for all rows
+    function calculateTotals() {
+      var totalCells = document.querySelectorAll('.total-val');
+      var grandTotal = 0;
+
+      totalCells.forEach(function(cell) {
+        grandTotal += parseNumber(cell.innerText);
+      });
+
+      document.getElementById('grandTotal').innerText = formatNumber(grandTotal);
+    }
+
+    // Add a new row to the table
+    function addRow() {
+      var tbody = document.getElementById('tableBody');
+      var rowCount = tbody.children.length + 1;
+      
+      var tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="text-center p-1 row-no">${rowCount}</td>
+        <td class="p-1" contenteditable="true">Nama Bahan Bangunan Baru</td>
+        <td class="text-center p-1 vol-val" contenteditable="true" oninput="updateRowTotal(this)">0</td>
+        <td class="text-center p-1" contenteditable="true">Bh</td>
+        <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="price-val" contenteditable="true" oninput="updateRowTotal(this)">0</span></div></td>
+        <td class="p-1"><div class="flex justify-between"><span>Rp</span><span class="total-val font-semibold">0</span></div></td>
+        <td class="no-print text-center border-none"><button onclick="deleteRow(this)" class="text-red-500 hover:text-red-700 font-bold px-1">✕</button></td>
+      `;
+      
+      tbody.appendChild(tr);
+      renumberRows();
+      calculateTotals();
+    }
+
+    // Delete a row
+    function deleteRow(btn) {
+      var row = btn.closest('tr');
+      row.remove();
+      renumberRows();
+      calculateTotals();
+    }
+
+    // Renumber rows sequentially
+    function renumberRows() {
+      var rows = document.querySelectorAll('#tableBody tr');
+      rows.forEach(function(row, index) {
+        row.querySelector('.row-no').innerText = index + 1;
+      });
+    }
+  </script>
+</body>
+</html>
